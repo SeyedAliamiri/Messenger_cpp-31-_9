@@ -1,6 +1,5 @@
 #ifndef CHAT_H
 #define CHAT_H
-
 #include<QString>
 #include<QDateTime>
 struct Message{
@@ -14,9 +13,9 @@ class chat
 {
 public:
     chat();
-   virtual int type_id();
+   virtual int type_id()=0; //1->user 2->group 3->channel
 
-private:
+protected:
     QString name;
     //default=username
     QString username;
@@ -26,9 +25,9 @@ private:
     bool is_favorite;
     int read_file();
     int save_file();
-    virtual int send_message();
-    virtual int receive_message();
-    virtual void show_messages();
+    virtual int send_message()=0;
+    virtual int receive_message()=0;
+    virtual void show_messages()=0;
 
 
 };
