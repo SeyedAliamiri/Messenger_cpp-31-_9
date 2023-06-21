@@ -6,7 +6,7 @@
 class group: public chat
 {
 public:
-    group();
+    group(QString);
     int type_id() override;
     int send_message() override;
     int receive_message() override;

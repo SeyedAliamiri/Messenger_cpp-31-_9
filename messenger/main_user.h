@@ -1,18 +1,19 @@
 #ifndef MAIN_USER_H
 #define MAIN_USER_H
 #include<QString>
+#include"chat.h"
 
 class main_user
 {
 public:
-    main_user();
+    main_user(QString tokenn,QString user_name,QString pass_word);
 
 private:
     QString token;
     QString username;
     QString password;
-    //USER* users_arr
-    //USER* favorites
+    QVector<chat*> users_arr;
+    QVector<chat*> favorites;
     int readfile();
     int savefile();
     int send_message(QString);
