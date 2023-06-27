@@ -19,7 +19,7 @@ protected:
     QString name;
     //default=username
     const QString username;
-    QDateTime saved_date;
+    QString saved_date;
     QVector<Message> messages;//is this really needed???
     bool able_to_send;
     bool is_favorite;

@@ -50,7 +50,7 @@ int chat::save_file(Message new_message){
     //append the new message
     //appent to vector
     //}
-
+    saved_date=new_message.message_date;
     if(file.open(QIODevice::ReadOnly)){
         QByteArray data;
         data=file.readAll();

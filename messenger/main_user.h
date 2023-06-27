@@ -12,6 +12,7 @@ private:
     QString token;
     QString username;
     QString password;
+    QString saved_date;
     QVector<chat*> users_arr;
     QVector<chat*> favorites;
     int readfile();
