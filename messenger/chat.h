@@ -4,7 +4,7 @@
 #include<QDateTime>
 struct Message{
 QString text;
-QString massage_date;
+QString message_date;
 QString sender_userid;
 };
 
@@ -24,7 +24,7 @@ protected:
     bool able_to_send;
     bool is_favorite;
     int read_file();
-    int save_file();
+    int save_file(Message);
     virtual int send_message()=0;//zz
     virtual int receive_message()=0;
     virtual void show_messages()=0;
