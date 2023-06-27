@@ -1,6 +1,6 @@
 #include "user.h"
 
-user::user(QString user_name): chat(user_name)
+user::user(QString user_name,int flag_able_tosend): chat(user_name,flag_able_tosend)
 {
 
 }

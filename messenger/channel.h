@@ -6,7 +6,7 @@
 class channel: public chat
 {
 public:
-    channel(QString user_name);
+    channel(QString ,int);
     int type_id() override;
     int send_message() override;
     int receive_message() override;

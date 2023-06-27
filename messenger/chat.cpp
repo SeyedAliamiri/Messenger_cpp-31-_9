@@ -6,10 +6,11 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QUrl>
-chat::chat(QString user_name) : username(user_name)
+chat::chat(QString user_name,int flag_able_tosend) : username(user_name)
 {
     name = username;
-
+    saved_date="";
+    read_file();
 }
 int chat::read_file(){
 
@@ -37,7 +38,7 @@ int chat::read_file(){
         return 1;
     }
     else{
-
+        //means file doesnt exist
         return 0;
     }
 }
@@ -51,6 +52,7 @@ int chat::save_file(Message new_message){
     //appent to vector
     //}
     saved_date=new_message.message_date;
+    if(file.exists()){
     if(file.open(QIODevice::ReadOnly)){
         QByteArray data;
         data=file.readAll();
@@ -79,9 +81,15 @@ int chat::save_file(Message new_message){
 
         return 1;
     }
+    else
+
+    //error in open file
+
+
+    }
     else{
     //means file doesnt exist
-        file.open(QIODevice::WriteOnly);
+        if(file.open(QIODevice::WriteOnly)){
         QJsonObject json_obj;
         json_obj.value("number")=1;
         QJsonObject new_data;
@@ -95,6 +103,11 @@ int chat::save_file(Message new_message){
         file.close();
 
 
-        return 0;
+        return 1;
+    }
+        else
+
+        //error in open file
+
     }
 }

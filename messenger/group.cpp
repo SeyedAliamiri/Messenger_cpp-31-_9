@@ -1,6 +1,6 @@
 #include "group.h"
 
-group::group(QString user_name): chat(user_name)
+group::group(QString user_name,int flag_able_tosend): chat(user_name,flag_able_tosend)
 {
 
 }

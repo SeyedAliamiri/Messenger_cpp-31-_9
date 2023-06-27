@@ -1,7 +1,7 @@
 #include "channel.h"
 
 
-channel::channel(QString user_name): chat(user_name)
+channel::channel(QString user_name,int flag_able_tosend): chat(user_name,flag_able_tosend)
 {
 
 }

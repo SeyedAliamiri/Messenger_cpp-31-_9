@@ -5,7 +5,7 @@
 class user: public chat
 {
 public:
-    user(QString);
+    user(QString,int);
     int type_id() override;
     int send_message() override;
     int receive_message() override;
