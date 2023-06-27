@@ -2,6 +2,12 @@
 #define CHAT_H
 #include<QString>
 #include<QDateTime>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QUrl>
+#include <QJsonDocument>
+#include <QJsonObject>
 struct Message{
 QString text;
 QString message_date;
@@ -25,7 +31,7 @@ protected:
     bool is_favorite;
     int read_file();
     int save_file(Message);
-    virtual int send_message()=0;//zz
+    virtual int send_message(QString message, QString token)=0;//zz
     virtual int receive_message()=0;
     virtual void show_messages()=0;
 

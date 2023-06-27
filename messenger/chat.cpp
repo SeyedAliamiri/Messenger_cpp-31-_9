@@ -8,6 +8,7 @@
 #include <QUrl>
 chat::chat(QString user_name,int flag_able_tosend) : username(user_name)
 {
+    able_to_send = flag_able_tosend;
     name = username;
     saved_date="";
     read_file();
@@ -81,7 +82,7 @@ int chat::save_file(Message new_message){
 
         return 1;
     }
-    else
+    //else
 
     //error in open file
 
@@ -105,7 +106,7 @@ int chat::save_file(Message new_message){
 
         return 1;
     }
-        else
+        //else
 
         //error in open file
 

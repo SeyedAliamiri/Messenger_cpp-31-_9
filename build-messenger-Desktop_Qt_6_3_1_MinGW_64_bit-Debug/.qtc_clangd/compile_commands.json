@@ -9,7 +9,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -34,7 +34,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -46,9 +46,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -72,10 +72,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger\\channel.cpp"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger\\channel.cpp"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/messenger/channel.cpp"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/messenger/channel.cpp"
 },
 {
     "arguments": [
@@ -87,7 +87,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -112,7 +112,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -124,9 +124,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -150,10 +150,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger\\chat.cpp"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger\\chat.cpp"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/messenger/chat.cpp"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/messenger/chat.cpp"
 },
 {
     "arguments": [
@@ -165,7 +165,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -190,7 +190,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -202,9 +202,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -228,10 +228,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger\\group.cpp"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger\\group.cpp"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/messenger/group.cpp"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/messenger/group.cpp"
 },
 {
     "arguments": [
@@ -243,7 +243,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -268,7 +268,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -280,9 +280,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -306,10 +306,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger\\main.cpp"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger\\main.cpp"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/messenger/main.cpp"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/messenger/main.cpp"
 },
 {
     "arguments": [
@@ -321,7 +321,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -346,7 +346,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -358,9 +358,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -384,10 +384,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger\\main_user.cpp"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger\\main_user.cpp"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/messenger/main_user.cpp"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/messenger/main_user.cpp"
 },
 {
     "arguments": [
@@ -399,7 +399,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -424,7 +424,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -436,9 +436,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -462,10 +462,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger\\mainwindow.cpp"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger\\mainwindow.cpp"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/messenger/mainwindow.cpp"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/messenger/mainwindow.cpp"
 },
 {
     "arguments": [
@@ -477,7 +477,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -502,7 +502,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -514,9 +514,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -540,10 +540,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger\\user.cpp"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger\\user.cpp"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/messenger/user.cpp"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/messenger/user.cpp"
 },
 {
     "arguments": [
@@ -555,7 +555,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -580,7 +580,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -592,9 +592,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -618,10 +618,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger\\channel.h"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger\\channel.h"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/messenger/channel.h"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/messenger/channel.h"
 },
 {
     "arguments": [
@@ -633,7 +633,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -658,7 +658,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -670,9 +670,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -696,10 +696,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger\\chat.h"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger\\chat.h"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/messenger/chat.h"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/messenger/chat.h"
 },
 {
     "arguments": [
@@ -711,7 +711,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -736,7 +736,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -748,9 +748,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -774,10 +774,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger\\group.h"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger\\group.h"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/messenger/group.h"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/messenger/group.h"
 },
 {
     "arguments": [
@@ -789,7 +789,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -814,7 +814,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -826,9 +826,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -852,10 +852,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger\\main_user.h"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger\\main_user.h"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/messenger/main_user.h"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/messenger/main_user.h"
 },
 {
     "arguments": [
@@ -867,7 +867,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -892,7 +892,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -904,9 +904,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -930,10 +930,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger\\mainwindow.h"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger\\mainwindow.h"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/messenger/mainwindow.h"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/messenger/mainwindow.h"
 },
 {
     "arguments": [
@@ -945,7 +945,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -970,7 +970,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -982,9 +982,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -1008,10 +1008,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger\\user.h"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger\\user.h"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/messenger/user.h"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/messenger/user.h"
 },
 {
     "arguments": [
@@ -1023,7 +1023,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\AppData\\Local\\Temp\\QtCreator-ZdgABN\\clang-uiheader-gAjoyG",
+        "C:\\Users\\RSKALA\\AppData\\Local\\Temp\\QtCreator-GEhvwO\\clang-uiheader-wivYqG",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -1048,7 +1048,7 @@
         "-DQT_CORE_LIB",
         "-DQT_NEEDS_QMAIN",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\messenger",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\messenger",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include",
         "-I",
@@ -1060,9 +1060,9 @@
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\include\\QtCore",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\debug",
         "-I",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
         "-I",
         "C:\\Qt\\6.3.1\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
@@ -1086,9 +1086,9 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\ALI\\Desktop\\approject\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\ui_mainwindow.h"
+        "C:\\Users\\RSKALA\\Desktop\\ap project\\AP_project\\build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\\ui_mainwindow.h"
     ],
-    "directory": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/ALI/Desktop/approject/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/ui_mainwindow.h"
+    "directory": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/RSKALA/Desktop/ap project/AP_project/build-messenger-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/ui_mainwindow.h"
 }
 ]
