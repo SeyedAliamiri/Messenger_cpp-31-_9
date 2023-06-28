@@ -17,6 +17,7 @@ QString sender_userid;
 
 class chat
 {
+    friend class main_user;
 public:
     chat(QString,int);
    virtual int type_id()=0; //1->user 2->group 3->channel

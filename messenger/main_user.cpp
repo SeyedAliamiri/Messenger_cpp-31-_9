@@ -14,6 +14,9 @@ main_user::main_user(QString tokenn,QString user_name,QString pass_word)
 
 }
 
+
+
+
 int main_user::readfile(){
     //a
     //all users having chat
@@ -58,35 +61,210 @@ int main_user::readfile(){
 
     }
 
-
-
 }
+
+
+
+
+
+
 int main_user::savefile(){
-    //a
-    //check list if new chat
-    //append to file
-    //append vector
-    //vector sort
+    //get users list
+    QUrl u_url("http://api.barafardayebehtar.ml:8080/getuserlist?token=" + token );
+    QNetworkAccessManager u_manager;
+    QNetworkReply *u_reply = u_manager.get(QNetworkRequest(u_url)); // Send GET request
+    int u_returncode = 0;
+    while(u_reply->isRunning()){}
+    if (u_reply->error() == QNetworkReply::NoError) {
+
+        QByteArray data = u_reply->readAll();
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+        QJsonObject jsonObj = jsonDoc.object();
+        QString code= jsonObj.value("code").toString();
+        if(code.toInt()==200){
+            std::string number_str=jsonObj.value("message").toString().toStdString().substr(15);
+            int num=0;
+            for(int i=0;;++i){
+                if('0'<=number_str[i]&&number_str[i]<='9'){
+                    num=num*10+number_str[i]-48;
+
+                }
+                else break;
+
+            }
+            for(int i= 0;i<num;++i){
+                QString usernametemp=jsonObj.value("block "+QString::number(i)).toObject().value("user_name").toString();
+                int flag =1;
+                for(auto & it:users_arr){
+                    if(it->username==usernametemp){
+                        flag =0;break;
+                        //means saved already
+                    }
+                    if(flag){
+                        chat* temp=new user(usernametemp,1);
+                        users_arr.push_back(temp);
+
+                    }
+                }
+            }
+        }
+        u_returncode =  code.toInt();
+    }
+
+    // get group list
+    QUrl g_url("http://api.barafardayebehtar.ml:8080/getgrouplist?token=" + token );
+    QNetworkAccessManager g_manager;
+    QNetworkReply *g_reply = g_manager.get(QNetworkRequest(g_url)); // Send GET request
+    int g_returncode = 0;
+    while(g_reply->isRunning()){}
+    if (g_reply->error() == QNetworkReply::NoError) {
+
+        QByteArray data = g_reply->readAll();
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+        QJsonObject jsonObj = jsonDoc.object();
+        QString code= jsonObj.value("code").toString();
+        if(code.toInt()==200){
+            std::string number_str=jsonObj.value("message").toString().toStdString().substr(12);
+            int num=0;
+            for(int i=0;;++i){
+                if('0'<=number_str[i]&&number_str[i]<='9'){
+                    num=num*10+number_str[i]-48;
+
+                }
+                else break;
+
+            }
+            for(int i= 0;i<num;++i){
+                QString groupnametemp=jsonObj.value("block "+QString::number(i)).toObject().value("user_name").toString();
+                int flag =1;
+                for(auto & it:users_arr){
+                    if(it->username==groupnametemp){
+                        flag =0;break;
+                        //means saved already
+                    }
+                    if(flag){
+                        chat* temp=new user(groupnametemp,1);
+                        users_arr.push_back(temp);
+
+                    }
+
+
+                }
+
+            }
+
+        }
+
+
+        g_returncode =  code.toInt();
+
+    }
+
+    //get channel list
+    QUrl c_url("http://api.barafardayebehtar.ml:8080/getgrouplist?token=" + token );
+    QNetworkAccessManager c_manager;
+    QNetworkReply *c_reply = g_manager.get(QNetworkRequest(c_url)); // Send GET request
+    int c_returncode = 0;
+    while(c_reply->isRunning()){}
+    if (c_reply->error() == QNetworkReply::NoError) {
+
+        QByteArray data = c_reply->readAll();
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+        QJsonObject jsonObj = jsonDoc.object();
+        QString code= jsonObj.value("code").toString();
+        if(code.toInt()==200){
+            std::string number_str=jsonObj.value("message").toString().toStdString().substr(12);
+            int num=0;
+            for(int i=0;;++i){
+                if('0'<=number_str[i]&&number_str[i]<='9'){
+                    num=num*10+number_str[i]-48;
+
+                }
+                else break;
+
+            }
+            for(int i= 0;i<num;++i){
+                QString channelnametemp=jsonObj.value("block "+QString::number(i)).toObject().value("user_name").toString();
+                int flag =1;
+                for(auto & it:users_arr){
+                    if(it->username==channelnametemp){
+                        flag =0;break;
+                        //means saved already
+                    }
+                    if(flag){
+                        chat* temp=new user(channelnametemp,1);
+                        //1??
+                        users_arr.push_back(temp);
+
+                    }
+
+
+                }
+
+            }
+
+        }
+
+
+        c_returncode =  code.toInt();
+
+    }
+
+
 }
+
+
+
+
+
+
 int main_user::send_message(QString){
     //zz
     //send message-> [show]
 }
+
+
+
+
 int main_user::receive_message(){
     //
 }
+
+
+
+
 int main_user::show_Person_list(){
 
 }
+
+
+
+
+
 int main_user::show_Channel_list(){
 
 }
+
+
+
+
+
 int main_user::show_Group_list(){
 
 }
+
+
+
+
+
 int main_user::show_all(){
 
 }
+
+
+
+
+
 int main_user::sort(){
     //by time
     //zz

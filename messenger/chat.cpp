@@ -48,10 +48,7 @@ int chat::read_file(){
 int chat::save_file(Message new_message){
     QFile file(username+".JSON");
 
-    //if(newmessage){
-    //append the new message
-    //appent to vector
-    //}
+
     saved_date=new_message.message_date;
     if(file.exists()){
     if(file.open(QIODevice::ReadOnly)){
