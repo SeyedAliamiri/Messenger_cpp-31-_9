@@ -33,8 +33,10 @@ protected:
     int read_file();
     int save_file(Message);
     virtual int send_message(QString message, QString token)=0;//zz
-    virtual int receive_message()=0;
+    virtual int receive_message(QString token)=0;
     virtual void show_messages()=0;
+    int send_resultcode;
+    QString changedateformat(QString date);
 
 
 };

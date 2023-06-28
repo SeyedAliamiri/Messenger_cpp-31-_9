@@ -8,13 +8,13 @@ int user::type_id(){
     return 1;
 }
 
-//returns the code in servers reply (if no reply returns 0) //return might have bug
+
 int user::send_message(QString message, QString token) {
     if(able_to_send){
         QUrl url("http://api.barafardayebehtar.ml:8080/sendmessageuser?token=" + token + "&dst=" + username + "&body=" + message);
         QNetworkAccessManager manager;
         QNetworkReply *reply = manager.get(QNetworkRequest(url)); // Send GET request
-        int returncode = 0;
+
         QObject::connect(reply, &QNetworkReply::finished, [&]() {
             if (reply->error() == QNetworkReply::NoError) {
 
@@ -23,16 +23,46 @@ int user::send_message(QString message, QString token) {
                 QJsonObject jsonObj = jsonDoc.object();
                 QString code= jsonObj.value("code").toString();
 
-                returncode =  code.toInt();
+                send_resultcode = code.toInt();
 
             }
         }  );
-        return returncode;
+        return 1;
     }
     return 0;
 }
 
-int user::receive_message(){
+int user::receive_message(QString token){
+
+    while(true){
+        QString date = "";
+        if(saved_date != ""){
+            date = "&date=" + changedateformat(saved_date);
+        }
+        QUrl url("http://api.barafardayebehtar.ml:8080//getuserchats?token=" + token + "&dst=" + username + date);
+
+        QNetworkAccessManager manager;
+        QNetworkReply *reply = manager.get(QNetworkRequest(url)); // Send GET request
+        QObject::connect(reply, &QNetworkReply::finished, [&]() {
+            if (reply->error() == QNetworkReply::NoError) {
+                QByteArray data = reply->readAll();
+                QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+                QJsonObject jsonObj = jsonDoc.object();
+
+
+               if( jsonObj.constFind("block 0") != jsonObj.end()){
+                   QJsonObject block0 = jsonObj.value("block 0").toObject();
+                   Message msg;
+                   msg.message_date = block0.value("date").toString();
+                   msg.sender_userid = block0.value("src").toString();
+                   msg.text = block0.value("body").toString();
+
+                   save_file(msg);
+               }
+
+            }
+        });
+    }
     return 1;
 }
 void user::show_messages(){

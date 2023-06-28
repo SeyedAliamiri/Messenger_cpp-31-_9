@@ -9,7 +9,7 @@ public:
     channel(QString ,int);
     int type_id() override;
     int send_message(QString message, QString token) override;
-    int receive_message() override;
+    int receive_message(QString token) override;
     void show_messages() override;
 };
 

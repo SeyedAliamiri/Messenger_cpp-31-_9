@@ -108,4 +108,14 @@ int chat::save_file(Message new_message){
         //error in open file
 
     }
+    return 1;
+}
+
+QString chat::changedateformat(QString date){
+    QString newdate = "";
+    for(auto i:date){
+        if(i >= '0' && i<= '9')
+            newdate += i;
+    }
+    return newdate;
 }

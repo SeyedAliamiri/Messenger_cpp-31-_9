@@ -5,6 +5,7 @@
 #include"user.h"
 #include"channel.h"
 #include"group.h"
+#include<algorithm>
 main_user::main_user(QString tokenn,QString user_name,QString pass_word)
 {
     token = tokenn;
@@ -218,23 +219,26 @@ int main_user::savefile(){
 
 
 
-int main_user::send_message(QString){
+int main_user::send_message(QString message, chat* chat1){
     //zz
-    //send message-> [show]
+    chat1->send_message(message, token);
+
+    return 1;
 }
 
 
 
 
 int main_user::receive_message(){
-    //
+    //i.l.u :)
+    return 1;
 }
 
 
 
 
 int main_user::show_Person_list(){
-
+    return 1;
 }
 
 
@@ -242,7 +246,7 @@ int main_user::show_Person_list(){
 
 
 int main_user::show_Channel_list(){
-
+    return 1;
 }
 
 
@@ -250,7 +254,7 @@ int main_user::show_Channel_list(){
 
 
 int main_user::show_Group_list(){
-
+    return 1;
 }
 
 
@@ -258,7 +262,7 @@ int main_user::show_Group_list(){
 
 
 int main_user::show_all(){
-
+    return 1;
 }
 
 
@@ -268,4 +272,6 @@ int main_user::show_all(){
 int main_user::sort(){
     //by time
     //zz
+    std::sort(users_arr.begin() , users_arr.end() , [](const chat* a, const chat* b){ return a->saved_date<b->saved_date;});
+    return 1;
 }

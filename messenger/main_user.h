@@ -17,7 +17,7 @@ private:
     QVector<chat*> favorites;
     int readfile();
     int savefile();
-    int send_message(QString);
+    int send_message(QString, chat*);
     int receive_message();
     int show_Person_list();
     int show_Channel_list();
