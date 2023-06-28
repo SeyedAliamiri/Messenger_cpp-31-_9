@@ -70,12 +70,28 @@ int main_user::readfile(){
 
 
 int main_user::savefile(){
+    int numb=0;
+    QJsonDocument doc;
+    QJsonObject obj;
+    QFile file("main_user.josn");
+    if(file.exists()){
+        if(file.open(QIODevice::ReadOnly)){
+         doc=QJsonDocument::fromJson(file.readAll());
+         obj=doc.object();
+         numb=obj.value("number").toInt();
+         file.remove();
+         file.close();
+        }
+
+
+
+
     //get users list
     QUrl u_url("http://api.barafardayebehtar.ml:8080/getuserlist?token=" + token );
     QNetworkAccessManager u_manager;
     QNetworkReply *u_reply = u_manager.get(QNetworkRequest(u_url)); // Send GET request
     int u_returncode = 0;
-    while(u_reply->isRunning()){}
+    QObject::connect(u_reply, &QNetworkReply::finished, [&]() {
     if (u_reply->error() == QNetworkReply::NoError) {
 
         QByteArray data = u_reply->readAll();
@@ -103,6 +119,11 @@ int main_user::savefile(){
                     }
                     if(flag){
                         chat* temp=new user(usernametemp,1);
+                        numb+=1;
+                        obj["number"]=numb;
+                        obj.insert("user_id "+QString::number(i+1),usernametemp);
+                        obj.insert("type_id "+QString::number(i+1),1);
+                        obj.insert("able_to_send  "+QString::number(i+1),1);
                         users_arr.push_back(temp);
 
                     }
@@ -111,13 +132,13 @@ int main_user::savefile(){
         }
         u_returncode =  code.toInt();
     }
-
+});
     // get group list
     QUrl g_url("http://api.barafardayebehtar.ml:8080/getgrouplist?token=" + token );
     QNetworkAccessManager g_manager;
     QNetworkReply *g_reply = g_manager.get(QNetworkRequest(g_url)); // Send GET request
     int g_returncode = 0;
-    while(g_reply->isRunning()){}
+    QObject::connect(g_reply, &QNetworkReply::finished, [&]() {
     if (g_reply->error() == QNetworkReply::NoError) {
 
         QByteArray data = g_reply->readAll();
@@ -145,6 +166,10 @@ int main_user::savefile(){
                     }
                     if(flag){
                         chat* temp=new user(groupnametemp,1);
+                        obj["number"]=numb;
+                        obj.insert("user_id "+QString::number(i+1),groupnametemp);
+                        obj.insert("type_id "+QString::number(i+1),3);
+                        obj.insert("able_to_send  "+QString::number(i+1),1);
                         users_arr.push_back(temp);
 
                     }
@@ -159,14 +184,14 @@ int main_user::savefile(){
 
         g_returncode =  code.toInt();
 
-    }
+    }});
 
     //get channel list
     QUrl c_url("http://api.barafardayebehtar.ml:8080/getgrouplist?token=" + token );
     QNetworkAccessManager c_manager;
     QNetworkReply *c_reply = g_manager.get(QNetworkRequest(c_url)); // Send GET request
     int c_returncode = 0;
-    while(c_reply->isRunning()){}
+    QObject::connect(c_reply, &QNetworkReply::finished, [&]() {
     if (c_reply->error() == QNetworkReply::NoError) {
 
         QByteArray data = c_reply->readAll();
@@ -195,6 +220,10 @@ int main_user::savefile(){
                     if(flag){
                         chat* temp=new user(channelnametemp,1);
                         //1??
+                        obj["number"]=numb;
+                        obj.insert("user_id "+QString::number(i+1),channelnametemp);
+                        obj.insert("type_id "+QString::number(i+1),2);
+                        obj.insert("able_to_send  "+QString::number(i+1),1);
                         users_arr.push_back(temp);
 
                     }
@@ -209,7 +238,12 @@ int main_user::savefile(){
 
         c_returncode =  code.toInt();
 
-    }
+    }});
+    file.open(QIODevice::WriteOnly);
+    QJsonDocument doc2;
+    doc2.setObject(obj);
+    file.write(doc2.toJson());
+    file.close();
 
 
 }
@@ -231,6 +265,11 @@ int main_user::send_message(QString message, chat* chat1){
 
 int main_user::receive_message(){
     //i.l.u :)
+    //m.t :)
+    for(auto & it:users_arr){
+
+        it->receive_message(token);
+    }
     return 1;
 }
 
