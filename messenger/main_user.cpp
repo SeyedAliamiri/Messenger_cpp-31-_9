@@ -65,23 +65,9 @@ int main_user::readfile(){
 }
 
 
+int main_user::check_for_new_chat(){
 
 
-
-
-int main_user::savefile(){
-    int numb=0;
-    QJsonDocument doc;
-    QJsonObject obj;
-    QFile file("main_user.josn");
-    if(file.exists()){
-        if(file.open(QIODevice::ReadOnly)){
-         doc=QJsonDocument::fromJson(file.readAll());
-         obj=doc.object();
-         numb=obj.value("number").toInt();
-         file.remove();
-         file.close();
-        }
 
 
 
@@ -119,11 +105,7 @@ int main_user::savefile(){
                     }
                     if(flag){
                         chat* temp=new user(usernametemp,1);
-                        numb+=1;
-                        obj["number"]=numb;
-                        obj.insert("user_id "+QString::number(i+1),usernametemp);
-                        obj.insert("type_id "+QString::number(i+1),1);
-                        obj.insert("able_to_send  "+QString::number(i+1),1);
+                        savefile(usernametemp,1,1);
                         users_arr.push_back(temp);
 
                     }
@@ -166,10 +148,7 @@ int main_user::savefile(){
                     }
                     if(flag){
                         chat* temp=new user(groupnametemp,1);
-                        obj["number"]=numb;
-                        obj.insert("user_id "+QString::number(i+1),groupnametemp);
-                        obj.insert("type_id "+QString::number(i+1),3);
-                        obj.insert("able_to_send  "+QString::number(i+1),1);
+                         savefile(groupnametemp,3,1);
                         users_arr.push_back(temp);
 
                     }
@@ -220,10 +199,9 @@ int main_user::savefile(){
                     if(flag){
                         chat* temp=new user(channelnametemp,1);
                         //1??
-                        obj["number"]=numb;
-                        obj.insert("user_id "+QString::number(i+1),channelnametemp);
-                        obj.insert("type_id "+QString::number(i+1),2);
-                        obj.insert("able_to_send  "+QString::number(i+1),1);
+                        savefile(channelnametemp,2,1);
+                        //1??
+
                         users_arr.push_back(temp);
 
                     }
@@ -239,11 +217,56 @@ int main_user::savefile(){
         c_returncode =  code.toInt();
 
     }});
-    file.open(QIODevice::WriteOnly);
-    QJsonDocument doc2;
-    doc2.setObject(obj);
-    file.write(doc2.toJson());
-    file.close();
+
+
+
+}
+
+
+
+}
+
+
+
+int main_user::savefile(QString username,int type_id,int flag){
+    int numb=0;
+    QJsonDocument doc;
+    QJsonObject obj;
+    QFile file("main_user.josn");
+    if(file.exists()){
+        file.open(QIODevice::ReadOnly);
+         doc=QJsonDocument::fromJson(file.readAll());
+         obj=doc.object();
+         numb=obj.value("number").toInt();
+         file.remove();
+         file.close();
+         obj["number"]=numb+1;
+         obj.insert("user_id "+QString::number(numb+1),username);
+         obj.insert("type_id "+QString::number(numb+1),type_id);
+         obj.insert("able_to_send  "+QString::number(numb+1),flag);
+         QJsonDocument doc2;
+         doc2.setObject(obj);
+         file.open(QIODevice::WriteOnly);
+         file.write(doc2.toJson());
+         file.close();
+
+    }
+    else{
+     obj.insert("token",token);
+     obj.insert("password",password);
+     obj.insert("username",this->username);
+     obj.insert("saved_date",saved_date);
+     obj.insert("number",numb+1);
+     obj.insert("user_id "+QString::number(numb+1),username);
+     obj.insert("type_id "+QString::number(numb+1),type_id);
+     obj.insert("able_to_send  "+QString::number(numb+1),flag);
+     QJsonDocument doc2;
+     doc2.setObject(obj);
+     file.open(QIODevice::WriteOnly);
+     file.write(doc2.toJson());
+     file.close();
+
+    }
 
 
 }
