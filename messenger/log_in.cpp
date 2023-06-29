@@ -17,11 +17,7 @@ void log_in::on_pushButton_clicked()
 {
     if(ui->password_lineedit->text().size()!=0&&ui->username_lineedit->text().size()!=0){
         //z
-
-
-
-
-
+        emit signal_login(ui->username_lineedit->text(),ui->password_lineedit->text());
     }
 
 

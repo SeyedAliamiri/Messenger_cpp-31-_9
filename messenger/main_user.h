@@ -26,6 +26,11 @@ private:
     int show_all();
     int sort();
 
+    void creatgroup(QString group_name,QString group_title="");
+    void creatchannel(QString channel_name,QString channel_title="");
+    void joingroup(QString group_name);
+    void joinchannel(QString channel_name);
+
 };
 
 #endif // MAIN_USER_H

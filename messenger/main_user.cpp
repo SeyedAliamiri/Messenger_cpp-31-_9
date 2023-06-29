@@ -6,6 +6,7 @@
 #include"channel.h"
 #include"group.h"
 #include<algorithm>
+#include <QMessageBox>
 main_user::main_user(QString tokenn,QString user_name,QString pass_word)
 {
     token = tokenn;
@@ -280,7 +281,7 @@ int main_user::send_message(QString message, chat* chat1){
     //zz
     chat1->send_message(message, token);
 
-    return 1;
+    return chat1->send_resultcode;
 }
 
 
@@ -335,5 +336,116 @@ int main_user::sort(){
     //by time
     //zz
     std::sort(users_arr.begin() , users_arr.end() , [](const chat* a, const chat* b){ return a->saved_date<b->saved_date;});
+    std::sort(favorites.begin() , favorites.end() , [](const chat* a, const chat* b){ return a->saved_date<b->saved_date;});
     return 1;
+}
+
+void main_user::creatgroup(QString group_name,QString group_title)
+{
+    QString grouptitle = "";
+    if(group_title != ""){
+        grouptitle = "&group_title=" + group_title;
+    }
+
+    QUrl url("http://api.barafardayebehtar.ml:8080/creategroup?token=" + token + "&group_name=" + group_name + grouptitle);
+
+    QNetworkAccessManager manager;
+    QNetworkReply *reply = manager.get(QNetworkRequest(url));
+
+    QObject::connect(reply, &QNetworkReply::finished, [&]() {
+        if (reply->error() == QNetworkReply::NoError) {
+            QByteArray data = reply->readAll();
+            QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+            QJsonObject jsonObj = jsonDoc.object();
+            QString code = jsonObj.value("code").toString();
+            QString message = jsonObj.value("message").toString();
+
+            if(code == "200"){
+                //success
+            }
+            else{
+               //fail
+            }
+        }
+    });
+}
+
+void main_user::creatchannel(QString channel_name, QString channel_title)
+{
+    QString channeltitle = "";
+    if(channel_title != ""){
+        channeltitle = "&channel_title=" + channel_title;
+    }
+
+    QUrl url("http://api.barafardayebehtar.ml:8080/createchannel?token=" + token + "&channel_name=" + channel_name + channeltitle);
+
+    QNetworkAccessManager manager;
+    QNetworkReply *reply = manager.get(QNetworkRequest(url));
+
+    QObject::connect(reply, &QNetworkReply::finished, [&]() {
+        if (reply->error() == QNetworkReply::NoError) {
+            QByteArray data = reply->readAll();
+            QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+            QJsonObject jsonObj = jsonDoc.object();
+            QString code = jsonObj.value("code").toString();
+            QString message = jsonObj.value("message").toString();
+
+            if(code == "200"){
+                //success
+            }
+            else{
+               //fail
+            }
+        }
+    });
+}
+
+void main_user::joingroup(QString group_name)
+{
+    QUrl url("http://api.barafardayebehtar.ml:8080/joingroup?token=" + token + "&group_name=" + group_name);
+
+    QNetworkAccessManager manager;
+    QNetworkReply *reply = manager.get(QNetworkRequest(url));
+
+    QObject::connect(reply, &QNetworkReply::finished, [&]() {
+        if (reply->error() == QNetworkReply::NoError) {
+            QByteArray data = reply->readAll();
+            QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+            QJsonObject jsonObj = jsonDoc.object();
+            QString code = jsonObj.value("code").toString();
+            QString message = jsonObj.value("message").toString();
+
+            if(code == "200"){
+                //success
+            }
+            else{
+               //fail
+            }
+        }
+    });
+}
+
+void main_user::joinchannel(QString channel_name)
+{
+    QUrl url("http://api.barafardayebehtar.ml:8080/joinchannel?token=" + token + "&channel_name=" + channel_name);
+
+    QNetworkAccessManager manager;
+    QNetworkReply *reply = manager.get(QNetworkRequest(url));
+
+    QObject::connect(reply, &QNetworkReply::finished, [&]() {
+        if (reply->error() == QNetworkReply::NoError) {
+            QByteArray data = reply->readAll();
+            QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+            QJsonObject jsonObj = jsonDoc.object();
+            QString code = jsonObj.value("code").toString();
+            QString message = jsonObj.value("message").toString();
+
+            if(code == "200"){
+                //success
+            }
+            else{
+               //fail
+            }
+        }
+    });
 }

@@ -15,6 +15,9 @@ public:
     explicit sign_in(QWidget *parent = nullptr);
     ~sign_in();
 
+signals:
+    void signal_signup(QString, QString, QString, QString);
+
 private slots:
     void on_password_2_lineedit_textChanged(const QString &arg1);
 

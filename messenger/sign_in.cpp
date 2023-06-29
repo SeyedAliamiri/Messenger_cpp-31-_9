@@ -6,7 +6,7 @@ sign_in::sign_in(QWidget *parent) :
     ui(new Ui::sign_in)
 {
     ui->setupUi(this);
-    this->ui->textBrowser->hide();
+    this->ui->diffrent_error->hide();
 }
 
 sign_in::~sign_in()
@@ -18,13 +18,13 @@ void sign_in::on_password_2_lineedit_textChanged(const QString &arg1)
 {
  if(ui->username_lineedit->text().size()!=0&&ui->password_lineedit->text().size()!=0){
      if(ui->password_2_lineedit->text()==ui->password_lineedit->text()){
-          ui->textBrowser->hide();
+          ui->diffrent_error->hide();
          ui->sign_in_button->setEnabled(1);
 
      }
      else{
 
-         ui->textBrowser->show();
+         ui->diffrent_error->show();
 
      }
 
@@ -36,7 +36,7 @@ void sign_in::on_password_2_lineedit_textChanged(const QString &arg1)
 void sign_in::on_sign_in_button_clicked()
 {
     //z
-
+    emit signal_signup(ui->username_lineedit->text(), ui->password_lineedit->text(), ui->firstname->text(), ui->lastname->text());
 
 
 }
