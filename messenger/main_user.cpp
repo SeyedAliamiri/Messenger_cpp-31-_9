@@ -68,11 +68,6 @@ int main_user::readfile(){
 
 int main_user::check_for_new_chat(){
 
-
-
-
-
-
     //get users list
     QUrl u_url("http://api.barafardayebehtar.ml:8080/getuserlist?token=" + token );
     QNetworkAccessManager u_manager;
@@ -300,32 +295,69 @@ int main_user::receive_message(){
 
 
 
-int main_user::show_Person_list(){
-    return 1;
+ QVector<chat*> main_user::show_Person_list(){
+    sort();
+    QVector<chat*> temp;
+    for(auto & it:users_arr){
+        if(it->type_id()==1){
+            temp.push_back(it);
+
+        }
+
+    }
+
+
+
+    return temp;
 }
 
 
 
 
 
-int main_user::show_Channel_list(){
-    return 1;
+QVector<chat*> main_user::show_Channel_list(){
+    sort();
+    QVector<chat*> temp;
+    for(auto & it:users_arr){
+        if(it->type_id()==2){
+            temp.push_back(it);
+
+        }
+
+    }
+
+
+
+    return temp;
 }
 
 
 
 
 
-int main_user::show_Group_list(){
-    return 1;
+QVector<chat*> main_user::show_Group_list(){
+    sort();
+    QVector<chat*> temp;
+    for(auto & it:users_arr){
+        if(it->type_id()==3){
+            temp.push_back(it);
+
+        }
+
+    }
+
+    return temp;
+
+
 }
 
 
 
 
 
-int main_user::show_all(){
-    return 1;
+QVector<chat*> main_user::show_all(){
+  sort();
+  return users_arr;
 }
 
 

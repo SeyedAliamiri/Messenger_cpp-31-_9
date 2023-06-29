@@ -53,7 +53,7 @@ int group::receive_message(QString token) {
                    msg.message_date = block0.value("date").toString();
                    msg.sender_userid = block0.value("src").toString();
                    msg.text = block0.value("body").toString();
-
+                   flag_read=0;
                    save_file(msg);
                }
 
@@ -62,6 +62,6 @@ int group::receive_message(QString token) {
     }
     return 1;
 }
-void group::show_messages(){
-
+const QVector<Message>& group::show_messages(){
+    return messages;
 }

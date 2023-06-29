@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include"chat.h"
 #include<QMessageBox>
-
+#include"main_user.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -42,7 +42,7 @@ void MainWindow::signup(QString username, QString password, QString firstname, Q
 
             if(code == "200"){
                 signupwindow->close();
-                QMessageBox::information(signupwindow, "Success", message, QMessageBox::Ok);
+                login(username,password);
 
             }
             else{
@@ -71,8 +71,9 @@ void MainWindow::login(QString username, QString password)
             if(code == "200"){
                 loginwindow->close();
                 QMessageBox::information(loginwindow, "Success", message, QMessageBox::Ok);
-
-                token = jsonObj.value("token").toString();                                      //now what to do with token???
+                token = jsonObj.value("token").toString();
+                main_user *m;
+                //now what to do with token???
             }
             else{
                 QMessageBox::critical(loginwindow, "Failure", message, QMessageBox::Ok);

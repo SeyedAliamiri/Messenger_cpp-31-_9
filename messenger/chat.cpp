@@ -12,6 +12,7 @@ chat::chat(QString user_name,int flag_able_tosend) : username(user_name)
     name = username;
     saved_date="";
     read_file();
+    flag_read=1;
 }
 int chat::read_file(){
 

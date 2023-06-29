@@ -2,9 +2,13 @@
 #define MAIN_USER_H
 #include<QString>
 #include"chat.h"
-
+#include"user.h"
+#include"channel.h"
+#include"group.h"
+class main_page;
 class main_user
 {
+    friend class main_page;
 public:
     main_user(QString tokenn,QString user_name,QString pass_word);
 
@@ -20,10 +24,10 @@ private:
     int send_message(QString, chat*);
     int check_for_new_chat();
     int receive_message();
-    int show_Person_list();
-    int show_Channel_list();
-    int show_Group_list();
-    int show_all();
+    QVector<chat*> show_Person_list();
+    QVector<chat*> show_Channel_list();
+    QVector<chat*> show_Group_list();
+    QVector<chat*> show_all();
     int sort();
 
     void creatgroup(QString group_name,QString group_title="");

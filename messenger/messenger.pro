@@ -14,6 +14,7 @@ SOURCES += \
     group.cpp \
     log_in.cpp \
     main.cpp \
+    main_page.cpp \
     main_user.cpp \
     mainwindow.cpp \
     sign_in.cpp \
@@ -24,6 +25,7 @@ HEADERS += \
     chat.h \
     group.h \
     log_in.h \
+    main_page.h \
     main_user.h \
     mainwindow.h \
     sign_in.h \
@@ -31,6 +33,7 @@ HEADERS += \
 
 FORMS += \
     log_in.ui \
+    main_page.ui \
     mainwindow.ui \
     sign_in.ui
 

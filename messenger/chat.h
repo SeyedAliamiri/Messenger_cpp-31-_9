@@ -8,6 +8,7 @@
 #include <QUrl>
 #include <QJsonDocument>
 #include <QJsonObject>
+
 struct Message{
 QString text;
 QString message_date;
@@ -17,6 +18,7 @@ QString sender_userid;
 
 class chat
 {
+    friend class main_page;
     friend class main_user;
 public:
     chat(QString,int);
@@ -34,10 +36,10 @@ protected:
     int save_file(Message);
     virtual int send_message(QString message, QString token)=0;//zz
     virtual int receive_message(QString token)=0;
-    virtual void show_messages()=0;
+    virtual const QVector<Message>& show_messages()=0;
     int send_resultcode;
     QString changedateformat(QString date);
-
+    int flag_read;
 
 };
 
