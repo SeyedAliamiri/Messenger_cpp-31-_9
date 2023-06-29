@@ -67,4 +67,5 @@ int user::receive_message(QString token){
 }
 const QVector<Message>& user::show_messages(){
         return messages;
+        //
 }
