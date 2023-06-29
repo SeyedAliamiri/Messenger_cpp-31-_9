@@ -12,21 +12,27 @@ SOURCES += \
     channel.cpp \
     chat.cpp \
     group.cpp \
+    log_in.cpp \
     main.cpp \
     main_user.cpp \
     mainwindow.cpp \
+    sign_in.cpp \
     user.cpp
 
 HEADERS += \
     channel.h \
     chat.h \
     group.h \
+    log_in.h \
     main_user.h \
     mainwindow.h \
+    sign_in.h \
     user.h
 
 FORMS += \
-    mainwindow.ui
+    log_in.ui \
+    mainwindow.ui \
+    sign_in.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
