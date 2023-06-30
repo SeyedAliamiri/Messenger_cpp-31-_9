@@ -10,6 +10,7 @@ main_page::main_page(main_user* mainuser,QWidget *parent) :
 {
     ui->setupUi(this);
     m=mainuser;
+    ui->scrollArea->setWidget(ui->widget_2);
 }
 
 main_page::~main_page()
@@ -86,13 +87,47 @@ void main_page::on_member_list_itemClicked(QListWidgetItem *item)
 }
 
 void main_page::set_messages_graphicview(QVector<Message> messages){
-    if(clicked_chat->able_to_send){
-        ui->send_button->setEnabled(1);
-        ui->new_message_text_edit->setEnabled(1);
 
-    }
+    ui->send_button->setEnabled(clicked_chat->able_to_send);
+    ui->new_message_text_edit->setEnabled(clicked_chat->able_to_send);
+
+
     //z
     //delete all messages and show new messages(refresh)
 
+    for(auto& msg:mesageslayout) delete msg;
+    for(auto& msg:mesagestext) msg->close();
+    mesageslayout.clear();
+    mesagestext.clear();
+
+    //reverse is better or not reverse???
+    QVector<Message>::reverse_iterator it;
+    for(it = messages.rbegin(); it!= messages.rend() ; it++){
+        QHBoxLayout* newlayout = new QHBoxLayout();
+        QSpacerItem* space = new QSpacerItem(200,20);
+        QTextBrowser* text = new QTextBrowser(this);
+        text->setText(it->sender_userid + ":     [" + it->message_date + "]\n" + it->text);
+        text->setMinimumSize(100,100);
+        if( it->sender_userid == clicked_chat->username ){    //?
+            newlayout->addSpacerItem(space);
+            newlayout->addWidget(text);
+        }
+        else{
+            newlayout->addWidget(text);
+            newlayout->addSpacerItem(space);
+        }
+
+        mesageslayout.push_back(newlayout);
+        //mesagesspacer.push_back(space);
+        mesagestext.push_back(text);
+        ui->verticalLayout_4->insertLayout(0,newlayout);
+
+    }
+
+
+}
+
+void main_page::new_message()
+{
 
 }

@@ -23,6 +23,7 @@ int user::send_message(QString message, QString token) {
                 QJsonObject jsonObj = jsonDoc.object();
                 QString code= jsonObj.value("code").toString();
 
+
                 send_resultcode = code.toInt();
 
             }

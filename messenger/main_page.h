@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include"main_user.h"
+#include <QHBoxLayout>
+#include <QTextBrowser>
 #include<QWidgetItem>
 #include<QListWidgetItem>
 namespace Ui {
@@ -36,6 +38,8 @@ private:
     main_user* m;
     chat* clicked_chat;
     Ui::main_page *ui;
+    QVector<QHBoxLayout*> mesageslayout;
+    QVector<QTextBrowser*> mesagestext;
 };
 
 #endif // MAIN_PAGE_H
