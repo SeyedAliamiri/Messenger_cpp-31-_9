@@ -13,16 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    signupwindow=new sign_in(this);
-    loginwindow=new log_in(this);
-
-    QObject::connect(signupwindow,SIGNAL(signal_signup(QString, QString, QString, QString)),this,SLOT(signup(QString, QString, QString, QString)));
-    QObject::connect(signupwindow,SIGNAL(already_have_account()),this,SLOT(already_have()));
-    QObject::connect(loginwindow,SIGNAL(signal_login(QString,QString)),this,SLOT(login(QString, QString)));
-    QObject::connect(loginwindow,SIGNAL(back()),this,SLOT(log_in_back()));
-
-
-    //first_check();
+    first_check();
 }
 
 MainWindow::~MainWindow()
@@ -61,11 +52,11 @@ void MainWindow::signup(QString username, QString password, QString firstname, Q
 
               if(code == "200"){
                   signupwindow->close();
+                  delete signupwindow;
                   login(username,password);
-
               }
               else{
-                  QMessageBox::critical(signupwindow, "signup Failure", message, QMessageBox::Ok);
+                  QMessageBox::critical(this, "signup Failure", message, QMessageBox::Ok);
               }
           }
       );
@@ -92,16 +83,32 @@ void MainWindow::login(QString username, QString password)
               QString token;
 
               if(code == "200"){
-                  loginwindow->close();
-                  QMessageBox::information(loginwindow, "Success", message, QMessageBox::Ok);
+                  QMessageBox::information(this, "Success", message, QMessageBox::Ok);
                   token = jsonObj.value("token").toString();
+                  QFile file("main_user.json");
+                  QJsonObject obj;
+                  obj.insert("username",username);
+                  obj.insert("token",token);
+                  qDebug()<<token;
+                  qDebug()<<jsonDoc;
+                  obj.insert("password",password);
+                  file.open(QIODevice::WriteOnly);
+                  QJsonDocument doc;
+                  doc.setObject(obj);
+                  file.write(doc.toJson());
+                  file.close();
                   m = new main_user(token, username, password);
+                  if(loginwindow==nullptr){
+                      delete loginwindow;
+                        loginwindow=nullptr;
+                  }
                   start_main_page();
+
 
                   //now what to do with token??? //save token in file
               }
               else{
-                  QMessageBox::critical(loginwindow, "login Failure", message, QMessageBox::Ok);
+                  QMessageBox::critical(this, "login Failure", message, QMessageBox::Ok);
               }
           }
       );
@@ -129,21 +136,34 @@ void MainWindow::first_check(){
 
     }
     else{
+        signupwindow=new sign_in(this);
+        QObject::connect(signupwindow,SIGNAL(signal_signup(QString, QString, QString, QString)),this,SLOT(signup(QString, QString, QString, QString)));
+        QObject::connect(signupwindow,SIGNAL(already_have_account()),this,SLOT(already_have()));
         signupwindow->show();
-
     }
 
 }
 
 
 void MainWindow::already_have(){
-    signupwindow->hide();
+    signupwindow->close();
+    _sleep(100);
+    delete signupwindow;
+    signupwindow=nullptr;
+    loginwindow=new log_in(this);
+    QObject::connect(loginwindow,SIGNAL(signal_login(QString,QString)),this,SLOT(login(QString, QString)));
+    QObject::connect(loginwindow,SIGNAL(back()),this,SLOT(log_in_back()));
     loginwindow->show();
 
 }
 
 void MainWindow::log_in_back(){
-    loginwindow->hide();
+    loginwindow->close();
+    delete loginwindow;
+    loginwindow=nullptr;
+    signupwindow=new sign_in(this);
+    QObject::connect(signupwindow,SIGNAL(signal_signup(QString, QString, QString, QString)),this,SLOT(signup(QString, QString, QString, QString)));
+    QObject::connect(signupwindow,SIGNAL(already_have_account()),this,SLOT(already_have()));
     signupwindow->show();
 
 };
@@ -162,7 +182,7 @@ public:
                m->m->check_for_new_chat();
 
            }
-
+            sleep(10000);
        }
 
    }
@@ -173,13 +193,8 @@ public:
 
 };
 
-
-
-
-
-
 void MainWindow::start_main_page(){
-    main_page * m_p=new main_page(m,this);
+    main_page * m_p=new main_page(m);
     QObject::connect(m,SIGNAL(find_new_message(chat*)),m_p,SLOT(new_message(chat*)));
     QObject::connect(m,SIGNAL(find_new_member(chat*)),m_p,SLOT(new_member(chat*)));
     new_thread t1(this);

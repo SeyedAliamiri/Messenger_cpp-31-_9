@@ -10,8 +10,11 @@ main_page::main_page(main_user* mainuser,QWidget *parent) :
 {
     ui->setupUi(this);
     m = mainuser;
+    clicked_chat=nullptr;
+
     ui->scrollArea->setWidget(ui->widget_2);
     member_list_type_id=0;
+
 
 }
 

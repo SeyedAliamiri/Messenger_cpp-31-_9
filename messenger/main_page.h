@@ -7,9 +7,9 @@
 #include <QTextBrowser>
 #include<QWidgetItem>
 #include<QListWidgetItem>
-namespace Ui {
-class main_page;
-}
+QT_BEGIN_NAMESPACE
+namespace Ui { class main_page; }
+QT_END_NAMESPACE
 
 class main_page : public QMainWindow
 {

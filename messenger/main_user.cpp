@@ -14,16 +14,7 @@ main_user::main_user(QString tokenn,QString user_name,QString pass_word)
     password = pass_word;
     saved_date="";
 
-    QFile file("user_name.json");
-    QJsonObject obj;
-    obj.insert("username",username);
-    obj.insert("token",token);
-    obj.insert("password",password);
-    file.open(QIODevice::WriteOnly);
-    QJsonDocument doc;
-    doc.setObject(obj);
-    file.write(doc.toJson());
-    file.close();
+
 
 
 }
