@@ -197,8 +197,8 @@ void MainWindow::start_main_page(){
     main_page * m_p=new main_page(m);
     QObject::connect(m,SIGNAL(find_new_message(chat*)),m_p,SLOT(new_message(chat*)));
     QObject::connect(m,SIGNAL(find_new_member(chat*)),m_p,SLOT(new_member(chat*)));
-    new_thread t1(this);
-    t1.start();
+    new_thread* t1=new new_thread(this);
+    t1->start();
     m_p->show();
 
 }
