@@ -86,6 +86,25 @@ void main_page::on_member_list_itemClicked(QListWidgetItem *item)
 
 }
 
+QString main_page::messageto_html(Message message)
+{
+    QString result = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd\">"
+    "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">"
+    "p, li { white-space: pre-wrap; }"
+    "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">"
+    "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">"
+            "<span style=\" font-size:11pt; color:#891ace;\">" + message.sender_userid + ":</span></p>";
+    QList<QString> splitedstring = message.text.split('\n');
+    for(auto& a:splitedstring){
+        result += "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">" + a + "</p>";
+    }
+
+
+    result += "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">"
+            "<span style=\" font-size:8pt; color:#891ace;\">" + message.message_date + "</span></p></body></html>";
+    return result;
+}
+
 void main_page::set_messages_graphicview(QVector<Message> messages){
 
     ui->send_button->setEnabled(clicked_chat->able_to_send);
@@ -101,12 +120,12 @@ void main_page::set_messages_graphicview(QVector<Message> messages){
     mesagestext.clear();
 
     //reverse is better or not reverse???
-    QVector<Message>::reverse_iterator it;
-    for(it = messages.rbegin(); it!= messages.rend() ; it++){
+    QVector<Message>::iterator it;
+    for(it = messages.begin(); it != messages.end() ; it++){
         QHBoxLayout* newlayout = new QHBoxLayout();
         QSpacerItem* space = new QSpacerItem(200,20);
         QTextBrowser* text = new QTextBrowser(this);
-        text->setText(it->sender_userid + ":     [" + it->message_date + "]\n" + it->text);
+        text->setHtml(messageto_html(*it));
         text->setMinimumSize(100,100);
         if( it->sender_userid == clicked_chat->username ){    //?
             newlayout->addSpacerItem(space);
@@ -120,7 +139,7 @@ void main_page::set_messages_graphicview(QVector<Message> messages){
         mesageslayout.push_back(newlayout);
         //mesagesspacer.push_back(space);
         mesagestext.push_back(text);
-        ui->verticalLayout_4->insertLayout(0,newlayout);
+        ui->verticalLayout_4->addLayout(newlayout);
 
     }
 

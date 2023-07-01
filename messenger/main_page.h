@@ -40,6 +40,7 @@ private:
     Ui::main_page *ui;
     QVector<QHBoxLayout*> mesageslayout;
     QVector<QTextBrowser*> mesagestext;
+    static QString messageto_html(Message message);
 };
 
 #endif // MAIN_PAGE_H
