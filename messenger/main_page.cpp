@@ -11,6 +11,8 @@ main_page::main_page(main_user* mainuser,QWidget *parent) :
     ui->setupUi(this);
     m=mainuser;
     ui->scrollArea->setWidget(ui->widget_2);
+    member_list_type_id=0;
+
 }
 
 main_page::~main_page()
@@ -22,8 +24,8 @@ void main_page::on_all_button_clicked()
 {
     QVector<chat*> members;
     members=m->show_all();
-
-
+    set_member_list(members);
+    member_list_type_id=4;
 
 
 }
@@ -72,18 +74,11 @@ void main_page::set_member_list(QVector<chat*> members){
 
 void main_page::on_member_list_itemClicked(QListWidgetItem *item)
 {
-    QString username=item->text();
+
     QVector<Message> messages;
-    for(auto & it:m->users_arr){
-        if(it->username==username){
-            messages=it->show_messages();
-            it->flag_read=1;
-            clicked_chat=it;
-            break;
-        }
-
-    }
-
+    messages=m->users_arr[ui->member_list->currentRow()]->messages;
+    set_messages_graphicview(messages);
+    clicked_chat=m->users_arr[ui->member_list->currentRow()];
 }
 
 QString main_page::messageto_html(Message message)
@@ -146,7 +141,94 @@ void main_page::set_messages_graphicview(QVector<Message> messages){
 
 }
 
-void main_page::new_message()
+void main_page::new_message(chat* C)
 {
+if(C->type_id()==member_list_type_id||member_list_type_id==4){
+    if(member_list_type_id==4){
+        on_all_button_clicked();
+    }
+        else if(member_list_type_id==3){
+        on_group_button_clicked();
+
+    }
+    else if(member_list_type_id==2){
+        on_channel_button_clicked();
+
+    }
+    else
+        on_users_button_clicked();
+
+    if(clicked_chat->username==C->username&&clicked_chat->type_id()==C->type_id()){
+        set_messages_graphicview(C->messages);
+
+    }
+
 
 }
+
+
+
+
+}
+
+void main_page::on_group_button_clicked()
+{
+    QVector<chat*> members;
+    members=m->show_Group_list();
+    set_member_list(members);
+    member_list_type_id=3;
+
+}
+
+
+void main_page::on_channel_button_clicked()
+{
+    QVector<chat*> members;
+    members=m->show_Channel_list();
+    set_member_list(members);
+    member_list_type_id=2;
+}
+
+
+void main_page::on_send_button_clicked()
+{
+    if(ui->new_message_text_edit->toPlainText().size()!=0){
+        QString message=ui->new_message_text_edit->toPlainText();
+        clicked_chat->send_message(message,m->token);
+
+    }
+
+
+}
+
+
+void main_page::on_users_button_clicked()
+{
+    QVector<chat*> members;
+    members=m->show_Person_list();
+    set_member_list(members);
+    member_list_type_id=1;
+}
+
+void main_page::new_member(chat* C){
+    if(member_list_type_id==4||member_list_type_id==C->type_id()){
+        if(member_list_type_id==4){
+            on_all_button_clicked();
+        }
+            else if(member_list_type_id==3){
+            on_group_button_clicked();
+
+        }
+        else if(member_list_type_id==2){
+            on_channel_button_clicked();
+
+        }
+        else
+            on_users_button_clicked();
+
+    }
+
+}
+
+
+

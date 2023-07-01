@@ -5,6 +5,7 @@
 class user: public chat
 {
      friend class main_page;
+
 public:
     user(QString,int);
     int type_id() override;

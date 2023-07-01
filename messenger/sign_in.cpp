@@ -1,6 +1,7 @@
 #include "sign_in.h"
 #include "ui_sign_in.h"
 #include"log_in.h"
+
 sign_in::sign_in(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::sign_in)
@@ -44,9 +45,8 @@ void sign_in::on_sign_in_button_clicked()
 
 void sign_in::on_alreadyhaveacount_clicked()
 {
-    log_in * new_page=new log_in(this);
-    this->close();
-    new_page->show();
+   emit already_have_account();
+
 
 }
 

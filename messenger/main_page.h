@@ -22,21 +22,30 @@ public:
     void set_member_list(QVector<chat*>);
     void set_messages_graphicview(QVector<Message>);
 
-public slots:
-    void new_message();
-    //when we have a new message
-    //refresh memberlist and maybe message graphicview
-    //this slot connects to mainuser signal(find_new_message)
+
 
 
 private slots:
+     void new_message(chat*);
+
+     void new_member(chat*);
     void on_all_button_clicked();
 
     void on_member_list_itemClicked(QListWidgetItem *item);
 
+    void on_group_button_clicked();
+
+    void on_channel_button_clicked();
+
+    void on_send_button_clicked();
+
+    void on_users_button_clicked();
+
 private:
     main_user* m;
     chat* clicked_chat;
+    int member_list_type_id;
+    //0=nothing 1=user 2=channels 3=groups 4=all
     Ui::main_page *ui;
     QVector<QHBoxLayout*> mesageslayout;
     QVector<QTextBrowser*> mesagestext;

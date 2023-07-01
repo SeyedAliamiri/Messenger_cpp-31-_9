@@ -17,7 +17,7 @@ public:
 
 signals:
     void signal_login(QString,QString);
-
+    void back();
 private slots:
     void on_pushButton_clicked();
 

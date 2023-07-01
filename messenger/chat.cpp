@@ -35,8 +35,6 @@ int chat::read_file(){
 
     }
 
-
-
         return 1;
     }
     else{

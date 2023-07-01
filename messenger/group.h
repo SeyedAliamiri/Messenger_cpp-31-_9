@@ -5,6 +5,7 @@
 class group: public chat
 {
     friend class main_page;
+
 public:
     group(QString,int);
     int type_id() override;

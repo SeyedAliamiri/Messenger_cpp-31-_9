@@ -1,4 +1,5 @@
 #include "group.h"
+#include"chat.h"
 
 group::group(QString user_name,int flag_able_tosend): chat(user_name,flag_able_tosend)
 {
@@ -54,6 +55,7 @@ int group::receive_message(QString token) {
                    msg.sender_userid = block0.value("src").toString();
                    msg.text = block0.value("body").toString();
                    flag_read=0;
+                   emit new_message(this);
                    save_file(msg);
                }
 

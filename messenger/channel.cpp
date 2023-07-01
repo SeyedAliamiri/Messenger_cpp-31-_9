@@ -1,5 +1,5 @@
 #include "channel.h"
-
+#include"chat.h"
 
 
 
@@ -57,6 +57,7 @@ int channel::receive_message(QString token){
                    msg.sender_userid = block0.value("src").toString();
                    msg.text = block0.value("body").toString();
                    flag_read=0;
+                   emit new_message(this);
                    save_file(msg);
                }
 

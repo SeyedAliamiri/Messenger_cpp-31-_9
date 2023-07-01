@@ -6,13 +6,28 @@
 #include"channel.h"
 #include"group.h"
 class main_page;
-class main_user
+class MainWindow;
+class new_thread;
+class main_user :public QObject
 {
     friend class main_page;
+    friend class MainWindow;
+    friend class new_thread;
+
+
 public:
     main_user(QString tokenn,QString user_name,QString pass_word);
 
+
+signals:
+     void  find_new_message(chat*);
+     void  find_new_member(chat*);
+
+public slots:
+     void  get_new_message(chat*);
+
 private:
+
     QString token;
     QString username;
     QString password;

@@ -14,6 +14,18 @@ main_user::main_user(QString tokenn,QString user_name,QString pass_word)
     password = pass_word;
     saved_date="";
 
+    QFile file("user_name.json");
+    QJsonObject obj;
+    obj.insert("username",username);
+    obj.insert("token",token);
+    obj.insert("password",password);
+    file.open(QIODevice::WriteOnly);
+    QJsonDocument doc;
+    doc.setObject(obj);
+    file.write(doc.toJson());
+    file.close();
+
+
 }
 
 
@@ -62,7 +74,7 @@ int main_user::readfile(){
         }
 
     }
-
+return 0;
 }
 
 
@@ -101,6 +113,8 @@ int main_user::check_for_new_chat(){
                     }
                     if(flag){
                         chat* temp=new user(usernametemp,1);
+                        QObject::connect(temp,SIGNAL(new_message(chat*)),this,SLOT(get_new_message(chat*)));
+                        emit find_new_member(temp);
                         savefile(usernametemp,1,1);
                         users_arr.push_back(temp);
 
@@ -145,6 +159,8 @@ int main_user::check_for_new_chat(){
                     if(flag){
                         chat* temp=new user(groupnametemp,1);
                          savefile(groupnametemp,3,1);
+                         QObject::connect(temp,SIGNAL(new_message(chat*)),this,SLOT(get_new_message(chat*)));
+                         emit find_new_member(temp);
                         users_arr.push_back(temp);
 
                     }
@@ -197,7 +213,8 @@ int main_user::check_for_new_chat(){
                         //1??
                         savefile(channelnametemp,2,1);
                         //1??
-
+                        QObject::connect(temp,SIGNAL(new_message(chat*)),this,SLOT(get_new_message(chat*)));
+                        emit find_new_member(temp);
                         users_arr.push_back(temp);
 
                     }
@@ -214,7 +231,7 @@ int main_user::check_for_new_chat(){
 
     }});
 
-
+return 1;
 
 }
 
@@ -264,7 +281,7 @@ int main_user::savefile(QString username,int type_id,int flag){
 
     }
 
-
+return 1;
 }
 
 
@@ -481,3 +498,11 @@ void main_user::joinchannel(QString channel_name)
         }
     });
 }
+
+void main_user::get_new_message(chat* C){
+    emit find_new_message(C);
+
+}
+
+
+

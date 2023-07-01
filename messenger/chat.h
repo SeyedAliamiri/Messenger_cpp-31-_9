@@ -16,13 +16,16 @@ QString sender_userid;
 };
 
 
-class chat
+class chat :public QObject
 {
     friend class main_page;
     friend class main_user;
 public:
     chat(QString,int);
    virtual int type_id()=0; //1->user 2->group 3->channel
+
+signals:
+    void new_message(chat*);
 
 protected:
     QString name;

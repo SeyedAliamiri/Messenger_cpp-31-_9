@@ -26,8 +26,7 @@ void log_in::on_pushButton_clicked()
 
 void log_in::on_pushButton_2_clicked()
 {
-    this->close();
-    parentWidget()->show();
+   emit back();
 
 
 }

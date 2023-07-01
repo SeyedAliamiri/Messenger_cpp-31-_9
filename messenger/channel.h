@@ -7,6 +7,7 @@ class channel: public chat
 {
      friend class main_page;
 public:
+
     channel(QString ,int);
     int type_id() override;
     int send_message(QString message, QString token) override;
