@@ -81,18 +81,21 @@ return 0;
 int main_user::check_for_new_chat(){
 
     //get users list
-    QUrl u_url("http://api.barafardayebehtar.ml:8080/getuserlist?token=" + token );
-    QNetworkAccessManager u_manager;
-    QNetworkReply *u_reply = u_manager.get(QNetworkRequest(u_url)); // Send GET request
-    int u_returncode = 0;
-    QObject::connect(u_reply, &QNetworkReply::finished, [&]() {
-    if (u_reply->error() == QNetworkReply::NoError) {
+
+    QNetworkAccessManager* u_manager = new QNetworkAccessManager(this);
+    QNetworkRequest request;
+    request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/getuserlist?token=" + token ));
+    u_manager->get(request);
+
+    //int u_returncode = 0;
+    QObject::connect(u_manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply* u_reply) {
+        if (u_reply->error()) { qDebug() << u_reply->errorString(); return; }
 
         QByteArray data = u_reply->readAll();
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
         QJsonObject jsonObj = jsonDoc.object();
         QString code= jsonObj.value("code").toString();
-        if(code.toInt()==200){
+        if(code=="200"){
             std::string number_str=jsonObj.value("message").toString().toStdString().substr(15);
             int num=0;
             for(int i=0;;++i){
@@ -122,16 +125,19 @@ int main_user::check_for_new_chat(){
                 }
             }
         }
-        u_returncode =  code.toInt();
+        //u_returncode =  code.toInt();
     }
-});
+);
     // get group list
-    QUrl g_url("http://api.barafardayebehtar.ml:8080/getgrouplist?token=" + token );
-    QNetworkAccessManager g_manager;
-    QNetworkReply *g_reply = g_manager.get(QNetworkRequest(g_url)); // Send GET request
-    int g_returncode = 0;
-    QObject::connect(g_reply, &QNetworkReply::finished, [&]() {
-    if (g_reply->error() == QNetworkReply::NoError) {
+
+    QNetworkAccessManager* g_manager = new QNetworkAccessManager(this);
+    QNetworkRequest request2;
+    request2.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/getgrouplist?token=" + token ));
+    g_manager->get(request2);
+
+    //int g_returncode = 0;
+    QObject::connect(g_manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *g_reply) {
+              if (g_reply->error()) { qDebug() << g_reply->errorString(); return; }
 
         QByteArray data = g_reply->readAll();
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
@@ -173,17 +179,20 @@ int main_user::check_for_new_chat(){
         }
 
 
-        g_returncode =  code.toInt();
+       // g_returncode =  code.toInt();
 
-    }});
+    });
 
     //get channel list
-    QUrl c_url("http://api.barafardayebehtar.ml:8080/getgrouplist?token=" + token );
-    QNetworkAccessManager c_manager;
-    QNetworkReply *c_reply = g_manager.get(QNetworkRequest(c_url)); // Send GET request
-    int c_returncode = 0;
-    QObject::connect(c_reply, &QNetworkReply::finished, [&]() {
-    if (c_reply->error() == QNetworkReply::NoError) {
+    QNetworkAccessManager* c_manager = new QNetworkAccessManager(this);
+    QNetworkRequest request3;
+    request3.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/getchannellist?token=" + token ));
+    c_manager->get(request3);
+
+
+    //int c_returncode = 0;
+    QObject::connect(c_manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *c_reply) {
+              if (c_reply->error()) { qDebug() << c_reply->errorString(); return; }
 
         QByteArray data = c_reply->readAll();
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
@@ -227,9 +236,9 @@ int main_user::check_for_new_chat(){
         }
 
 
-        c_returncode =  code.toInt();
+        //c_returncode =  code.toInt();
 
-    }});
+    });
 
 return 1;
 
@@ -396,13 +405,13 @@ void main_user::creatgroup(QString group_name,QString group_title)
         grouptitle = "&group_title=" + group_title;
     }
 
-    QUrl url("http://api.barafardayebehtar.ml:8080/creategroup?token=" + token + "&group_name=" + group_name + grouptitle);
+    QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+    QNetworkRequest request;
+    request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/creategroup?token=" + token + "&group_name=" + group_name + grouptitle));
+    manager->get(request);
 
-    QNetworkAccessManager manager;
-    QNetworkReply *reply = manager.get(QNetworkRequest(url));
-
-    QObject::connect(reply, &QNetworkReply::finished, [&]() {
-        if (reply->error() == QNetworkReply::NoError) {
+    QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
+              if (reply->error()) { qDebug() << reply->errorString(); return; }
             QByteArray data = reply->readAll();
             QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
             QJsonObject jsonObj = jsonDoc.object();
@@ -416,7 +425,7 @@ void main_user::creatgroup(QString group_name,QString group_title)
                //fail
             }
         }
-    });
+    );
 }
 
 void main_user::creatchannel(QString channel_name, QString channel_title)
@@ -426,13 +435,13 @@ void main_user::creatchannel(QString channel_name, QString channel_title)
         channeltitle = "&channel_title=" + channel_title;
     }
 
-    QUrl url("http://api.barafardayebehtar.ml:8080/createchannel?token=" + token + "&channel_name=" + channel_name + channeltitle);
+    QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+    QNetworkRequest request;
+    request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/createchannel?token=" + token + "&channel_name=" + channel_name + channeltitle));
+    manager->get(request);
 
-    QNetworkAccessManager manager;
-    QNetworkReply *reply = manager.get(QNetworkRequest(url));
-
-    QObject::connect(reply, &QNetworkReply::finished, [&]() {
-        if (reply->error() == QNetworkReply::NoError) {
+    QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
+              if (reply->error()) { qDebug() << reply->errorString(); return; }
             QByteArray data = reply->readAll();
             QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
             QJsonObject jsonObj = jsonDoc.object();
@@ -446,18 +455,18 @@ void main_user::creatchannel(QString channel_name, QString channel_title)
                //fail
             }
         }
-    });
+    );
 }
 
 void main_user::joingroup(QString group_name)
 {
-    QUrl url("http://api.barafardayebehtar.ml:8080/joingroup?token=" + token + "&group_name=" + group_name);
+    QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+    QNetworkRequest request;
+    request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/joingroup?token=" + token + "&group_name=" + group_name));
+    manager->get(request);
 
-    QNetworkAccessManager manager;
-    QNetworkReply *reply = manager.get(QNetworkRequest(url));
-
-    QObject::connect(reply, &QNetworkReply::finished, [&]() {
-        if (reply->error() == QNetworkReply::NoError) {
+    QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
+              if (reply->error()) { qDebug() << reply->errorString(); return; }
             QByteArray data = reply->readAll();
             QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
             QJsonObject jsonObj = jsonDoc.object();
@@ -471,18 +480,18 @@ void main_user::joingroup(QString group_name)
                //fail
             }
         }
-    });
+    );
 }
 
 void main_user::joinchannel(QString channel_name)
 {
-    QUrl url("http://api.barafardayebehtar.ml:8080/joinchannel?token=" + token + "&channel_name=" + channel_name);
+    QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+    QNetworkRequest request;
+    request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/joinchannel?token=" + token + "&channel_name=" + channel_name));
+    manager->get(request);
 
-    QNetworkAccessManager manager;
-    QNetworkReply *reply = manager.get(QNetworkRequest(url));
-
-    QObject::connect(reply, &QNetworkReply::finished, [&]() {
-        if (reply->error() == QNetworkReply::NoError) {
+    QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
+              if (reply->error()) { qDebug() << reply->errorString(); return; }
             QByteArray data = reply->readAll();
             QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
             QJsonObject jsonObj = jsonDoc.object();
@@ -496,7 +505,7 @@ void main_user::joinchannel(QString channel_name)
                //fail
             }
         }
-    });
+    );
 }
 
 void main_user::get_new_message(chat* C){

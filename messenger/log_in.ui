@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>547</width>
-    <height>301</height>
+    <width>319</width>
+    <height>233</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -41,7 +41,7 @@
      </spacer>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="3,1,3,1,3">
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="3,3,2,3">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
@@ -66,7 +66,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Username      </string>
+           <string>Username   </string>
           </property>
          </widget>
         </item>
@@ -123,19 +123,6 @@
        </layout>
       </item>
       <item>
-       <spacer name="verticalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <spacer name="horizontalSpacer_3">
@@ -159,7 +146,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Password      </string>
+           <string>Password   </string>
           </property>
          </widget>
         </item>

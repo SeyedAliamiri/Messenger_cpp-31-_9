@@ -15,12 +15,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     signupwindow=new sign_in(this);
     loginwindow=new log_in(this);
-    QObject::connect(signupwindow,SIGNAL(signal_signup(QString, QString, QString, QString)),this,SLOT(signup(QString username, QString password, QString firstname, QString lastname)));
+
+    QObject::connect(signupwindow,SIGNAL(signal_signup(QString, QString, QString, QString)),this,SLOT(signup(QString, QString, QString, QString)));
     QObject::connect(signupwindow,SIGNAL(already_have_account()),this,SLOT(already_have()));
-    QObject::connect(loginwindow,SIGNAL(signal_login(QString,QString)),this,SLOT(login(QString username, QString password)));
+    QObject::connect(loginwindow,SIGNAL(signal_login(QString,QString)),this,SLOT(login(QString, QString)));
     QObject::connect(loginwindow,SIGNAL(back()),this,SLOT(log_in_back()));
 
-    first_check();
+
+    //first_check();
 }
 
 MainWindow::~MainWindow()
@@ -38,59 +40,73 @@ void MainWindow::signup(QString username, QString password, QString firstname, Q
         last_name = "&lastname=" + lastname;
     }
 
-    QUrl url("http://api.barafardayebehtar.ml:8080/signup?username=" + username + "&password=" + password + first_name + last_name);
+    QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+    QNetworkRequest request;
+    request.setUrl(QUrl((QString)"http://api.barafardayebehtar.ml:8080/signup?username=" + username + (QString)"&password=" + password + first_name + last_name));
+    manager->get(request);
 
-    QNetworkAccessManager manager;
-    QNetworkReply *reply = manager.get(QNetworkRequest(url));
 
-    QObject::connect(reply, &QNetworkReply::finished, [&]() {
-        if (reply->error() == QNetworkReply::NoError) {
-            QByteArray data = reply->readAll();
-            QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
-            QJsonObject jsonObj = jsonDoc.object();
-            QString code = jsonObj.value("code").toString();
-            QString message = jsonObj.value("message").toString();
+    QObject::connect(manager, &QNetworkAccessManager::finished,
+          this, [=](QNetworkReply *reply) {
+              if (reply->error()) {
+                  qDebug() << reply->errorString();
+                  return;
+              }
 
-            if(code == "200"){
-                signupwindow->close();
-                login(username,password);
+              QByteArray data = reply->readAll();
+              QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+              QJsonObject jsonObj = jsonDoc.object();
+              QString code = jsonObj.value("code").toString();
+              QString message = jsonObj.value("message").toString();
 
-            }
-            else{
-                QMessageBox::critical(signupwindow, "Failure", message, QMessageBox::Ok);
-            }
-        }
-    });
+              if(code == "200"){
+                  signupwindow->close();
+                  login(username,password);
+
+              }
+              else{
+                  QMessageBox::critical(signupwindow, "signup Failure", message, QMessageBox::Ok);
+              }
+          }
+      );
+
+
 }
 
 void MainWindow::login(QString username, QString password)
 {
-    QUrl url("http://api.barafardayebehtar.ml:8080/login?username=" + username + "&password=" + password);
 
-    QNetworkAccessManager manager;
-    QNetworkReply *reply = manager.get(QNetworkRequest(url));
+    QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+    QNetworkRequest request;
+    request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/login?username=" + username + "&password=" + password));
+    manager->get(request);
 
-    QObject::connect(reply, &QNetworkReply::finished, [&]() {
-        if (reply->error() == QNetworkReply::NoError) {
-            QByteArray data = reply->readAll();
-            QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
-            QJsonObject jsonObj = jsonDoc.object();
-            QString code = jsonObj.value("code").toString();
-            QString message = jsonObj.value("message").toString();
-            QString token;
+    QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
+              if (reply->error()) { qDebug() << reply->errorString(); return; }
 
-            if(code == "200"){
-                loginwindow->close();
-                QMessageBox::information(loginwindow, "Success", message, QMessageBox::Ok);
-                token = jsonObj.value("token").toString();
-                m=new main_user(token,username,password);
-                //now what to do with token???
-            }
-            else{
-                QMessageBox::critical(loginwindow, "Failure", message, QMessageBox::Ok);
-            }
-        }
-    });
+              QByteArray data = reply->readAll();
+              QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+              QJsonObject jsonObj = jsonDoc.object();
+              QString code = jsonObj.value("code").toString();
+              QString message = jsonObj.value("message").toString();
+              QString token;
+
+              if(code == "200"){
+                  loginwindow->close();
+                  QMessageBox::information(loginwindow, "Success", message, QMessageBox::Ok);
+                  token = jsonObj.value("token").toString();
+                  m = new main_user(token, username, password);
+                  start_main_page();
+
+                  //now what to do with token??? //save token in file
+              }
+              else{
+                  QMessageBox::critical(loginwindow, "login Failure", message, QMessageBox::Ok);
+              }
+          }
+      );
+
+
 }
 
 void MainWindow::first_check(){
@@ -109,6 +125,7 @@ void MainWindow::first_check(){
         password=obj.value("password").toString();
         token=obj.value("token").toString();
         m=new main_user(token,username,password);
+        start_main_page();
 
     }
     else{
@@ -120,13 +137,13 @@ void MainWindow::first_check(){
 
 
 void MainWindow::already_have(){
-    signupwindow->close();
+    signupwindow->hide();
     loginwindow->show();
 
 }
 
 void MainWindow::log_in_back(){
-    loginwindow->close();
+    loginwindow->hide();
     signupwindow->show();
 
 };
@@ -163,8 +180,8 @@ public:
 
 void MainWindow::start_main_page(){
     main_page * m_p=new main_page(m,this);
-    QObject::connect(m,SIGNAL(find_new_message(chat* C)),m_p,SLOT(new_message(chat*)));
-    QObject::connect(m,SIGNAL(find_new_member(chat*)),m_p,SLOT( new_member(chat*)));
+    QObject::connect(m,SIGNAL(find_new_message(chat*)),m_p,SLOT(new_message(chat*)));
+    QObject::connect(m,SIGNAL(find_new_member(chat*)),m_p,SLOT(new_member(chat*)));
     new_thread t1(this);
     t1.start();
     m_p->show();

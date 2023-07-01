@@ -16,6 +16,7 @@ class MainWindow : public QMainWindow
 friend class new_thread;
 public:
     MainWindow(QWidget *parent = nullptr);
+    void first_check();
     ~MainWindow();
 
 public slots:
@@ -24,7 +25,7 @@ public slots:
     void already_have();
     void log_in_back();
 private:
-    void first_check();
+
     void start_main_page();
     Ui::MainWindow *ui;
     log_in* loginwindow;

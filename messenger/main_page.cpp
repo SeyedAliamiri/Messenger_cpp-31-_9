@@ -9,7 +9,7 @@ main_page::main_page(main_user* mainuser,QWidget *parent) :
     ui(new Ui::main_page)
 {
     ui->setupUi(this);
-    m=mainuser;
+    m = mainuser;
     ui->scrollArea->setWidget(ui->widget_2);
     member_list_type_id=0;
 

@@ -12,12 +12,14 @@ int user::type_id(){
 
 int user::send_message(QString message, QString token) {
     if(able_to_send){
-        QUrl url("http://api.barafardayebehtar.ml:8080/sendmessageuser?token=" + token + "&dst=" + username + "&body=" + message);
-        QNetworkAccessManager manager;
-        QNetworkReply *reply = manager.get(QNetworkRequest(url)); // Send GET request
 
-        QObject::connect(reply, &QNetworkReply::finished, [&]() {
-            if (reply->error() == QNetworkReply::NoError) {
+        QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+        QNetworkRequest request;
+        request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/sendmessageuser?token=" + token + "&dst=" + username + "&body=" + message));
+        manager->get(request);
+
+        QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
+                  if (reply->error()) { qDebug() << reply->errorString(); return; }
 
                 QByteArray data = reply->readAll();
                 QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
@@ -27,8 +29,7 @@ int user::send_message(QString message, QString token) {
 
                 send_resultcode = code.toInt();
 
-            }
-        }  );
+            });
         return 1;
     }
     return 0;
@@ -41,12 +42,14 @@ int user::receive_message(QString token){
         if(saved_date != ""){
             date = "&date=" + changedateformat(saved_date);
         }
-        QUrl url("http://api.barafardayebehtar.ml:8080//getuserchats?token=" + token + "&dst=" + username + date);
 
-        QNetworkAccessManager manager;
-        QNetworkReply *reply = manager.get(QNetworkRequest(url)); // Send GET request
-        QObject::connect(reply, &QNetworkReply::finished, [&]() {
-            if (reply->error() == QNetworkReply::NoError) {
+        QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+        QNetworkRequest request;
+        request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080//getuserchats?token=" + token + "&dst=" + username + date));
+        manager->get(request);
+
+        QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
+                  if (reply->error()) { qDebug() << reply->errorString(); return; }
                 QByteArray data = reply->readAll();
                 QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
                 QJsonObject jsonObj = jsonDoc.object();
@@ -64,8 +67,7 @@ int user::receive_message(QString token){
                    save_file(msg);
                }
 
-            }
-        });
+            });
     }
     return 1;
 }
