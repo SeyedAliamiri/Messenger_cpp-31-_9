@@ -18,6 +18,8 @@ QString sender_userid;
 
 class chat :public QObject
 {
+    Q_OBJECT
+
     friend class main_page;
     friend class main_user;
 public:

@@ -18,7 +18,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private slots:
+public slots:
     void signup(QString username, QString password, QString firstname, QString lastname);
     void login(QString username, QString password);
     void already_have();

@@ -10,6 +10,7 @@ class MainWindow;
 class new_thread;
 class main_user :public QObject
 {
+    Q_OBJECT
     friend class main_page;
     friend class MainWindow;
     friend class new_thread;
