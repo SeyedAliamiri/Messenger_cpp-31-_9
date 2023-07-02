@@ -201,6 +201,8 @@ void MainWindow::start_main_page(){
     //new_thread* t1=new new_thread(this);
     //t1->start();
     m_p->show();
+    m_p->setWindowIcon(QIcon(":/new/prefix1/appicon.png"));
+    m_p->setWindowTitle("messenger");
     m->receive_message();
     m->check_for_new_chat();
 

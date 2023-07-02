@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>appicon.png</file>
+        <file>add.jpg</file>
+        <file>add_g.png</file>
+        <file>add_u.png</file>
+        <file>channel.png</file>
+        <file>group.png</file>
+        <file>user.png</file>
+    </qresource>
+</RCC>

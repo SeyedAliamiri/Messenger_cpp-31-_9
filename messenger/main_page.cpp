@@ -7,6 +7,11 @@
 #include"user.h"
 #include"channel.h"
 #include<QFont>
+
+#define userpic ":/new/prefix1/user.png"
+#define grouppic ":/new/prefix1/group.png"
+#define channelpic ":/new/prefix1/channel.png"
+
 main_page::main_page(main_user* mainuser,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::main_page)
@@ -67,6 +72,17 @@ void main_page::set_member_list(QVector<chat*> members){
              b.setColor(c);
         }
         item->setBackground(b);
+
+        if(it->type_id()==1){
+            item->setIcon(QIcon(userpic));
+        }
+        else if(it->type_id()==2){
+            item->setIcon(QIcon(grouppic));
+        }
+        else if(it->type_id()==3){
+            item->setIcon(QIcon(channelpic));
+        }
+
         if(it->flag_read){
 
             item->setCheckState(Qt::Checked);
@@ -87,7 +103,7 @@ void main_page::on_member_list_itemClicked(QListWidgetItem *item)
     int num=0;
     for(auto& it:m->users_arr){
 
-        if(it->type_id()==this->member_list_type_id){
+        if( it->type_id()==this->member_list_type_id || member_list_type_id == 4){
             if(num==ui->member_list->currentRow()){
                 clicked_chat=it;
                 messages=it->show_messages();
