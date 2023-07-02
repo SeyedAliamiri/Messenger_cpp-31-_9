@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    first_check();
+    //first_check();
 }
 
 MainWindow::~MainWindow()
