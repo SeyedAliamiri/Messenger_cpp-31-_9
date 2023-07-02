@@ -9,10 +9,12 @@ join_channel_group::join_channel_group(bool channel1_group0, QWidget *parent) :
     if(channel1_group0){
         ui->label->setText("Joining Channel ...");
         ui->label_2->setText("Enter channel name:");
+        this->setWindowTitle("Join Channel");
     }
     else{
         ui->label->setText("Joining Group ...");
         ui->label_2->setText("Enter Group name:");
+        this->setWindowTitle("Join New Group");
 
     }
 }

@@ -6,6 +6,7 @@ log_in::log_in(QWidget *parent) :
     ui(new Ui::log_in)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Login");
 }
 
 log_in::~log_in()

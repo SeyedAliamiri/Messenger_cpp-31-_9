@@ -25,6 +25,12 @@ int user::send_message(QString message, QString token) {
                 QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
                 QJsonObject jsonObj = jsonDoc.object();
                 QString code= jsonObj.value("code").toString();
+                if(code!="200"){
+                    emit messagebox("Fail", jsonObj.value("message").toString(), 0);
+                }
+                else{
+                    emit messagebox("Success", jsonObj.value("message").toString(), 1);
+                }
 
 
                 send_resultcode = code.toInt();

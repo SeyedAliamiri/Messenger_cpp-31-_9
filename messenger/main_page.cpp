@@ -24,6 +24,11 @@ main_page::main_page(main_user* mainuser,QWidget *parent) :
     member_list_type_id=0;
 
     QObject::connect(m, SIGNAL(messagebox(QString, QString, bool)), this,SLOT(show_messagebox(QString, QString, bool)));
+    on_all_button_clicked();
+    ui->create_group->setIcon(QIcon(":/new/prefix1/add_g.png"));
+    ui->create_channel->setIcon(QIcon(":/new/prefix1/add.jpg"));
+    ui->new_user->setIcon(QIcon(":/new/prefix1/add_u.png"));
+    ui->newusergroupBox->hide();
 
 
 }
@@ -147,6 +152,7 @@ void main_page::set_messages_graphicview(QVector<Message> messages){
     //z
     //delete all messages and show new messages(refresh)
 
+    ui->chatname->setText(clicked_chat->username);
     for(auto& msg:mesageslayout) delete msg;
     for(auto& msg:mesagestext) msg->close();
     mesageslayout.clear();
@@ -160,7 +166,7 @@ void main_page::set_messages_graphicview(QVector<Message> messages){
         QTextBrowser* text = new QTextBrowser(this);
         text->setHtml(messageto_html(*it));
         text->setMinimumSize(100,100);
-        if( it->sender_userid == clicked_chat->username ){    //?
+        if( it->sender_userid == m->username ){    //?
             newlayout->addSpacerItem(space);
             newlayout->addWidget(text);
         }
@@ -231,8 +237,10 @@ void main_page::on_channel_button_clicked()
 void main_page::on_send_button_clicked()
 {
     if(ui->new_message_text_edit->toPlainText().size()!=0){
+
         QString message=ui->new_message_text_edit->toPlainText();
         clicked_chat->send_message(message,m->token);
+        ui->new_message_text_edit->clear();
 
     }
 
@@ -330,5 +338,40 @@ void main_page::on_create_group_clicked()
     create_channel_group* creatgroup = new create_channel_group(0,this);
     creatgroup->show();
     QObject::connect(creatgroup, SIGNAL(signal_creat(QString, QString)), this, SLOT(creategroup(QString, QString)));
+}
+
+
+void main_page::on_new_user_clicked()
+{
+    ui->newusergroupBox->show();
+}
+
+
+void main_page::on_newusercancel_clicked()
+{
+    ui->newuserlineEdit->clear();
+
+    ui->newusergroupBox->hide();
+}
+
+
+void main_page::on_newuserok_clicked()
+{
+    if(ui->newuserlineEdit->text() != ""){
+        clicked_chat = new user(ui->newuserlineEdit->text(),1);
+        QObject::connect(clicked_chat, SIGNAL(messagebox(QString, QString, bool)), this,SLOT(show_messagebox(QString, QString, bool)));
+
+
+        ui->send_button->setEnabled(clicked_chat->able_to_send);
+        ui->new_message_text_edit->setEnabled(clicked_chat->able_to_send);
+        ui->chatname->setText(clicked_chat->username);
+        for(auto& msg:mesageslayout) delete msg;
+        for(auto& msg:mesagestext) msg->close();
+        mesageslayout.clear();
+        mesagestext.clear();
+
+        ui->newuserlineEdit->clear();
+        ui->newusergroupBox->hide();
+    }
 }
 

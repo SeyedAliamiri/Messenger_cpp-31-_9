@@ -11,11 +11,13 @@ create_channel_group::create_channel_group(bool channel1_group0, QWidget *parent
         ui->label->setText("Creating Channel ...");
         ui->label_2->setText("Channel Name :");
         ui->label_3->setText("Channel Title :");
+        this->setWindowTitle("Create New Channel");
     }
     else{
         ui->label->setText("Creating Group ...");
         ui->label_2->setText("Group Name :");
         ui->label_3->setText("Group Title :");
+        this->setWindowTitle("Create New Group");
     }
 }
 

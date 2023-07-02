@@ -8,6 +8,7 @@ sign_in::sign_in(QWidget *parent) :
 {
     ui->setupUi(this);
     this->ui->diffrent_error->hide();
+    this->setWindowTitle("Signup");
 }
 
 sign_in::~sign_in()

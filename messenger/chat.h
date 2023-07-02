@@ -28,6 +28,7 @@ public:
 
 signals:
     void new_message(chat*);
+    void  messagebox(QString, QString, bool);
 
 protected:
     QString name;

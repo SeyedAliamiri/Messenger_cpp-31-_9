@@ -55,6 +55,12 @@ private slots:
 
     void on_create_group_clicked();
 
+    void on_new_user_clicked();
+
+    void on_newusercancel_clicked();
+
+    void on_newuserok_clicked();
+
 private:
     main_user* m;
     chat* clicked_chat;
