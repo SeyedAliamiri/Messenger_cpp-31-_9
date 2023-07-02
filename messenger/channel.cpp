@@ -16,7 +16,7 @@ int channel::send_message(QString message, QString token){
 
         QNetworkAccessManager* manager = new QNetworkAccessManager(this);
         QNetworkRequest request;
-        request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/sendmessagegroup?token=" + token + "&dst=" + username + "&body=" + message));
+        request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/sendmessagechannel?token=" + token + "&dst=" + username + "&body=" + message));
         manager->get(request);
 
         QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
@@ -49,7 +49,7 @@ int channel::receive_message(QString token){
 
         QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
             if (reply->error()) { qDebug() << reply->errorString(); return; }
-            if (reply->error()) { qDebug() << reply->errorString(); return; }
+
                 QByteArray data = reply->readAll();
                 QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
                 QJsonObject jsonObj = jsonDoc.object();
@@ -72,6 +72,8 @@ int channel::receive_message(QString token){
                     msg.sender_userid = jsonObj.value("block "+QString::number(i)).toObject().value("src").toString();
                     msg.text = jsonObj.value("block "+QString::number(i)).toObject().value("body").toString();
                     flag_read=0;
+                    saved_date=jsonObj.value("block "+QString::number(i)).toObject().value("date").toString();
+
                     emit new_message(this);
                     save_file(msg);
 

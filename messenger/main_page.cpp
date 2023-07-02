@@ -214,7 +214,7 @@ void main_page::on_group_button_clicked()
     QVector<chat*> members;
     members=m->show_Group_list();
     set_member_list(members);
-    member_list_type_id=3;
+    member_list_type_id=2;
 
 }
 
@@ -224,7 +224,7 @@ void main_page::on_channel_button_clicked()
     QVector<chat*> members;
     members=m->show_Channel_list();
     set_member_list(members);
-    member_list_type_id=2;
+    member_list_type_id=3;
 }
 
 

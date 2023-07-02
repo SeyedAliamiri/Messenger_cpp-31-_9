@@ -50,7 +50,7 @@ int user::receive_message(QString token){
 
         QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
                   if (reply->error()) { qDebug() << reply->errorString(); return; }
-                  if (reply->error()) { qDebug() << reply->errorString(); return; }
+
                       QByteArray data = reply->readAll();
                       QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
                       QJsonObject jsonObj = jsonDoc.object();
@@ -74,6 +74,7 @@ int user::receive_message(QString token){
                           msg.text = jsonObj.value("block "+QString::number(i)).toObject().value("body").toString();
                           flag_read=0;
                           emit new_message(this);
+                          saved_date=jsonObj.value("block "+QString::number(i)).toObject().value("date").toString();
                           save_file(msg);
 
                       }

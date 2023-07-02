@@ -23,7 +23,7 @@ int main_user::readfile(){
     //a
     //all users having chat
     //if file not found creat file
-    QFile file("main_user.josn");
+    QFile file("main_user.json");
     if(file.exists()){
         if(file.open(QIODevice::ReadOnly)){
         QJsonDocument doc=QJsonDocument::fromJson(file.readAll());
@@ -39,12 +39,12 @@ int main_user::readfile(){
                 users_arr.push_back(temp);
 
             }
-            else if(type_id==2){
+            else if(type_id==3){
                 chat* temp=new channel(userid,flag_able_tosend);
                  users_arr.push_back(temp);
 
             }
-            else if(type_id==3){
+            else if(type_id==2){
                 chat* temp=new group(userid,flag_able_tosend);
                  users_arr.push_back(temp);
 
@@ -98,7 +98,7 @@ int main_user::check_for_new_chat(){
                 QString usernametemp=jsonObj.value("block "+QString::number(i)).toObject().value("user_name").toString();
                 int flag =1;
                 for(auto & it:users_arr){
-                    if(it->username==usernametemp){
+                    if(it->username==usernametemp&&it->type_id()==1){
                         flag =0;break;
                         //means saved already
                     }}
@@ -153,7 +153,7 @@ int main_user::check_for_new_chat(){
                     }}
                     if(flag){
                         chat* temp=new group(groupnametemp,1);
-                         savefile(groupnametemp,3,1);
+                         savefile(groupnametemp,2,1);
                          QObject::connect(temp,SIGNAL(new_message(chat*)),this,SLOT(get_new_message(chat*)));
                          emit find_new_member(temp);
                         users_arr.push_back(temp);
@@ -209,7 +209,7 @@ int main_user::check_for_new_chat(){
                     if(flag){
                         chat* temp=new channel(channelnametemp,1);
                         //1??
-                        savefile(channelnametemp,2,1);
+                        savefile(channelnametemp,3,1);
                         //1??
                         QObject::connect(temp,SIGNAL(new_message(chat*)),this,SLOT(get_new_message(chat*)));
                         emit find_new_member(temp);
@@ -243,7 +243,7 @@ int main_user::savefile(QString username,int type_id,int flag){
     int numb=0;
     QJsonDocument doc;
     QJsonObject obj;
-    QFile file("main_user.josn");
+    QFile file("main_user.json");
     if(file.exists()){
         file.open(QIODevice::ReadOnly);
          doc=QJsonDocument::fromJson(file.readAll());
@@ -254,7 +254,7 @@ int main_user::savefile(QString username,int type_id,int flag){
          obj["number"]=numb+1;
          obj.insert("user_id "+QString::number(numb+1),username);
          obj.insert("type_id "+QString::number(numb+1),type_id);
-         obj.insert("able_to_send  "+QString::number(numb+1),flag);
+         obj.insert("able_to_send "+QString::number(numb+1),flag);
          QJsonDocument doc2;
          doc2.setObject(obj);
          file.open(QIODevice::WriteOnly);
@@ -269,7 +269,7 @@ int main_user::savefile(QString username,int type_id,int flag){
      obj.insert("number",numb+1);
      obj.insert("user_id "+QString::number(numb+1),username);
      obj.insert("type_id "+QString::number(numb+1),type_id);
-     obj.insert("able_to_send  "+QString::number(numb+1),flag);
+     obj.insert("able_to_send "+QString::number(numb+1),flag);
      QJsonDocument doc2;
      doc2.setObject(obj);
      file.open(QIODevice::WriteOnly);
@@ -333,7 +333,7 @@ QVector<chat*> main_user::show_Channel_list(){
     sort();
     QVector<chat*> temp;
     for(auto & it:users_arr){
-        if(it->type_id()==2){
+        if(it->type_id()==3){
             temp.push_back(it);
 
         }
@@ -353,7 +353,7 @@ QVector<chat*> main_user::show_Group_list(){
     sort();
     QVector<chat*> temp;
     for(auto & it:users_arr){
-        if(it->type_id()==3){
+        if(it->type_id()==2){
             temp.push_back(it);
 
         }

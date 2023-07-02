@@ -25,11 +25,11 @@ int chat::read_file(){
     QJsonDocument json_doc=QJsonDocument::fromJson(data);
     QJsonObject json_obj=json_doc.object();
     int message_count=json_obj.value("number").toInt();
-    for(int i=0;i<message_count;++i){
+    for(int i=1;i<=message_count;++i){
         QJsonObject temp=json_obj.value("message "+QString::number(i)).toObject();
         Message message_struct;
-        message_struct.text=temp.value("body").toString();
-        message_struct.sender_userid=temp.value("sender").toString();
+        message_struct.text=temp.value("text").toString();
+        message_struct.sender_userid=temp.value("sender_userid").toString();
         message_struct.message_date=temp.value("date").toString();
         messages.push_back(message_struct);
 
@@ -38,19 +38,19 @@ int chat::read_file(){
 
         return 1;
     }
+    }
     else{
         //means file doesnt exist
         return 0;
     }
-    }
-    return 0;
+
 }
 
 //thread
 int chat::save_file(Message new_message){
     QFile file(username+".JSON");
 
-
+    messages.push_back(new_message);
     saved_date=new_message.message_date;
     if(file.exists()){
     if(file.open(QIODevice::ReadOnly)){
