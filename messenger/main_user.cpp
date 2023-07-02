@@ -411,9 +411,11 @@ void main_user::creatgroup(QString group_name,QString group_title)
 
             if(code == "200"){
                 //success
+                emit messagebox("Success", message, 1);
             }
             else{
                //fail
+                emit messagebox("Fail", message, 0);
             }
         }
     );
@@ -441,9 +443,11 @@ void main_user::creatchannel(QString channel_name, QString channel_title)
 
             if(code == "200"){
                 //success
+                emit messagebox("Success", message, 1);
             }
             else{
                //fail
+                emit messagebox("Fail", message, 0);
             }
         }
     );
@@ -466,9 +470,11 @@ void main_user::joingroup(QString group_name)
 
             if(code == "200"){
                 //success
+                emit messagebox("Success", message, 1);
             }
             else{
                //fail
+                emit messagebox("Fail", message, 0);
             }
         }
     );
@@ -491,9 +497,11 @@ void main_user::joinchannel(QString channel_name)
 
             if(code == "200"){
                 //success
+                emit messagebox("Success", message, 1);
             }
             else{
                //fail
+                emit messagebox("Fail", message, 0);
             }
         }
     );

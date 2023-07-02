@@ -1,4 +1,7 @@
 #include "main_page.h"
+#include "create_channel_group.h"
+#include "join_channel_group.h"
+#include "QMessageBox"
 #include "ui_main_page.h"
 #include"chat.h"
 #include"user.h"
@@ -14,6 +17,8 @@ main_page::main_page(main_user* mainuser,QWidget *parent) :
 
     ui->scrollArea->setWidget(ui->widget_2);
     member_list_type_id=0;
+
+    QObject::connect(m, SIGNAL(messagebox(QString, QString, bool)), this,SLOT(show_messagebox(QString, QString, bool)));
 
 
 }
@@ -234,4 +239,66 @@ void main_page::new_member(chat* C){
 }
 
 
+
+
+void main_page::on_create_channel_clicked()
+{
+    create_channel_group* creatchannel = new create_channel_group(1,this);
+    creatchannel->show();
+    QObject::connect(creatchannel, SIGNAL(signal_creat(QString, QString)), this, SLOT(createchannel(QString, QString)));
+}
+
+
+void main_page::on_join_channel_clicked()
+{
+    join_channel_group* joinchannel = new join_channel_group(1 , this);
+    joinchannel->show();
+    QObject::connect(joinchannel, SIGNAL(signal_join(QString)), this, SLOT(joinchannel(QString)));
+}
+
+void main_page::joinchannel(QString channelname)
+{
+    m->joinchannel(channelname);
+}
+
+void main_page::joingroup(QString groupname)
+{
+    m->joingroup(groupname);
+}
+
+void main_page::createchannel(QString channelname, QString channeltitle)
+{
+    m->creatchannel(channelname,channeltitle);
+}
+
+void main_page::creategroup(QString groupname, QString grouptitle)
+{
+    m->creatgroup(groupname, grouptitle);
+}
+
+void main_page::show_messagebox(QString title, QString text, bool success)
+{
+    if(success){
+        QMessageBox::information(this, title,text);
+    }
+    else{
+        QMessageBox::critical(this,title,text);
+    }
+}
+
+
+void main_page::on_join_group_clicked()
+{
+    join_channel_group* joingroup = new join_channel_group(0 , this);
+    joingroup->show();
+    QObject::connect(joingroup, SIGNAL(signal_join(QString)), this, SLOT(joingroup(QString)));
+}
+
+
+void main_page::on_create_group_clicked()
+{
+    create_channel_group* creatgroup = new create_channel_group(0,this);
+    creatgroup->show();
+    QObject::connect(creatgroup, SIGNAL(signal_creat(QString, QString)), this, SLOT(creategroup(QString, QString)));
+}
 

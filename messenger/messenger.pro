@@ -11,7 +11,9 @@ CONFIG += c++17
 SOURCES += \
     channel.cpp \
     chat.cpp \
+    create_channel_group.cpp \
     group.cpp \
+    join_channel_group.cpp \
     log_in.cpp \
     main.cpp \
     main_page.cpp \
@@ -23,7 +25,9 @@ SOURCES += \
 HEADERS += \
     channel.h \
     chat.h \
+    create_channel_group.h \
     group.h \
+    join_channel_group.h \
     log_in.h \
     main_page.h \
     main_user.h \
@@ -32,6 +36,8 @@ HEADERS += \
     user.h
 
 FORMS += \
+    create_channel_group.ui \
+    join_channel_group.ui \
     log_in.ui \
     main_page.ui \
     mainwindow.ui \

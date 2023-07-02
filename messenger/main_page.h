@@ -41,6 +41,20 @@ private slots:
 
     void on_users_button_clicked();
 
+    void on_create_channel_clicked();
+
+    void on_join_channel_clicked();
+
+    void joinchannel(QString channelname);
+    void joingroup(QString groupname);
+    void createchannel(QString channelname, QString channeltitle);
+    void creategroup(QString groupname, QString grouptitle);
+    void show_messagebox(QString, QString, bool);
+
+    void on_join_group_clicked();
+
+    void on_create_group_clicked();
+
 private:
     main_user* m;
     chat* clicked_chat;

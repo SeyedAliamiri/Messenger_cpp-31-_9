@@ -23,6 +23,7 @@ public:
 signals:
      void  find_new_message(chat*);
      void  find_new_member(chat*);
+     void  messagebox(QString, QString, bool);
 
 public slots:
      void  get_new_message(chat*);
