@@ -36,16 +36,19 @@ int main_user::readfile(){
             int flag_able_tosend=obj.value("able_to_send "+QString::number(i+1)).toInt();
             if(type_id==1){
                chat* temp=new user(userid,flag_able_tosend);
+               QObject::connect(temp,SIGNAL(new_message(chat*)),this,SLOT(get_new_message(chat*)));
                 users_arr.push_back(temp);
 
             }
             else if(type_id==3){
                 chat* temp=new channel(userid,flag_able_tosend);
+                QObject::connect(temp,SIGNAL(new_message(chat*)),this,SLOT(get_new_message(chat*)));
                  users_arr.push_back(temp);
 
             }
             else if(type_id==2){
                 chat* temp=new group(userid,flag_able_tosend);
+                QObject::connect(temp,SIGNAL(new_message(chat*)),this,SLOT(get_new_message(chat*)));
                  users_arr.push_back(temp);
 
             }
@@ -84,7 +87,7 @@ int main_user::check_for_new_chat(){
         QJsonObject jsonObj = jsonDoc.object();
         QString code= jsonObj.value("code").toString();
         if(code=="200"){
-            std::string number_str=jsonObj.value("message").toString().toStdString().substr(15);
+            std::string number_str=jsonObj.value("message").toString().toStdString().substr(20);
             int num=0;
             for(int i=0;;++i){
                 if('0'<=number_str[i]&&number_str[i]<='9'){
@@ -129,7 +132,6 @@ int main_user::check_for_new_chat(){
 
         QByteArray data = g_reply->readAll();
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
-        qDebug()<<jsonDoc;
         QJsonObject jsonObj = jsonDoc.object();
         QString code= jsonObj.value("code").toString();
         if(code.toInt()==200){

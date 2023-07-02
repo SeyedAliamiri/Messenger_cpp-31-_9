@@ -48,6 +48,15 @@ int chat::read_file(){
 
 //thread
 int chat::save_file(Message new_message){
+    for(auto& it:messages){
+        if(it.message_date==new_message.message_date&&it.sender_userid==new_message.sender_userid){
+            return 0;
+
+        }
+
+    }
+
+
     QFile file(username+".json");
 
     messages.push_back(new_message);

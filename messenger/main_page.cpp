@@ -21,7 +21,7 @@ main_page::main_page(main_user* mainuser,QWidget *parent) :
     clicked_chat=nullptr;
 
     ui->scrollArea->setWidget(ui->widget_2);
-    member_list_type_id=0;
+    member_list_type_id=4;
 
     QObject::connect(m, SIGNAL(messagebox(QString, QString, bool)), this,SLOT(show_messagebox(QString, QString, bool)));
     on_all_button_clicked();
@@ -191,11 +191,11 @@ if(C->type_id()==member_list_type_id||member_list_type_id==4){
     if(member_list_type_id==4){
         on_all_button_clicked();
     }
-        else if(member_list_type_id==3){
+        else if(member_list_type_id==2){
         on_group_button_clicked();
 
     }
-    else if(member_list_type_id==2){
+    else if(member_list_type_id==3){
         on_channel_button_clicked();
 
     }
@@ -203,7 +203,7 @@ if(C->type_id()==member_list_type_id||member_list_type_id==4){
         on_users_button_clicked();
 
     if(clicked_chat->username==C->username&&clicked_chat->type_id()==C->type_id()){
-        set_messages_graphicview(C->messages);
+        set_messages_graphicview(C->show_messages());
 
     }
 
@@ -261,11 +261,11 @@ void main_page::new_member(chat* C){
         if(member_list_type_id==4){
             on_all_button_clicked();
         }
-            else if(member_list_type_id==3){
+            else if(member_list_type_id==2){
             on_group_button_clicked();
 
         }
-        else if(member_list_type_id==2){
+        else if(member_list_type_id==3){
             on_channel_button_clicked();
 
         }

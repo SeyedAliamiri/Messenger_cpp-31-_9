@@ -60,7 +60,7 @@ int user::receive_message(QString token){
                       QByteArray data = reply->readAll();
                       QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
                       QJsonObject jsonObj = jsonDoc.object();
-
+qDebug()<<jsonDoc;
                       QString s=jsonObj.value("message").toString();
                       std::string number_str=s.toStdString().substr(11);
                       int num=0;
