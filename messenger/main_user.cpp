@@ -13,14 +13,11 @@ main_user::main_user(QString tokenn,QString user_name,QString pass_word)
     username = user_name;
     password = pass_word;
     saved_date="";
-
+    readfile();
 
 
 
 }
-
-
-
 
 int main_user::readfile(){
     //a
@@ -79,7 +76,7 @@ int main_user::check_for_new_chat(){
     u_manager->get(request);
 
     //int u_returncode = 0;
-    QObject::connect(u_manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply* u_reply) {
+    QObject::connect(u_manager, &QNetworkAccessManager::finished, this, [&](QNetworkReply* u_reply) {
         if (u_reply->error()) { qDebug() << u_reply->errorString(); return; }
 
         QByteArray data = u_reply->readAll();
@@ -104,7 +101,7 @@ int main_user::check_for_new_chat(){
                     if(it->username==usernametemp){
                         flag =0;break;
                         //means saved already
-                    }
+                    }}
                     if(flag){
                         chat* temp=new user(usernametemp,1);
                         QObject::connect(temp,SIGNAL(new_message(chat*)),this,SLOT(get_new_message(chat*)));
@@ -114,7 +111,7 @@ int main_user::check_for_new_chat(){
 
                     }
                 }
-            }
+
         }
         //u_returncode =  code.toInt();
     }
@@ -127,11 +124,12 @@ int main_user::check_for_new_chat(){
     g_manager->get(request2);
 
     //int g_returncode = 0;
-    QObject::connect(g_manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *g_reply) {
+    QObject::connect(g_manager, &QNetworkAccessManager::finished, this, [&](QNetworkReply *g_reply) {
               if (g_reply->error()) { qDebug() << g_reply->errorString(); return; }
 
         QByteArray data = g_reply->readAll();
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+        qDebug()<<jsonDoc;
         QJsonObject jsonObj = jsonDoc.object();
         QString code= jsonObj.value("code").toString();
         if(code.toInt()==200){
@@ -146,15 +144,15 @@ int main_user::check_for_new_chat(){
 
             }
             for(int i= 0;i<num;++i){
-                QString groupnametemp=jsonObj.value("block "+QString::number(i)).toObject().value("user_name").toString();
+                QString groupnametemp=jsonObj.value("block "+QString::number(i)).toObject().value("group_name").toString();
                 int flag =1;
                 for(auto & it:users_arr){
                     if(it->username==groupnametemp){
                         flag =0;break;
                         //means saved already
-                    }
+                    }}
                     if(flag){
-                        chat* temp=new user(groupnametemp,1);
+                        chat* temp=new group(groupnametemp,1);
                          savefile(groupnametemp,3,1);
                          QObject::connect(temp,SIGNAL(new_message(chat*)),this,SLOT(get_new_message(chat*)));
                          emit find_new_member(temp);
@@ -167,7 +165,7 @@ int main_user::check_for_new_chat(){
 
             }
 
-        }
+
 
 
        // g_returncode =  code.toInt();
@@ -182,7 +180,7 @@ int main_user::check_for_new_chat(){
 
 
     //int c_returncode = 0;
-    QObject::connect(c_manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *c_reply) {
+    QObject::connect(c_manager, &QNetworkAccessManager::finished, this, [&](QNetworkReply *c_reply) {
               if (c_reply->error()) { qDebug() << c_reply->errorString(); return; }
 
         QByteArray data = c_reply->readAll();
@@ -201,15 +199,15 @@ int main_user::check_for_new_chat(){
 
             }
             for(int i= 0;i<num;++i){
-                QString channelnametemp=jsonObj.value("block "+QString::number(i)).toObject().value("user_name").toString();
+                QString channelnametemp=jsonObj.value("block "+QString::number(i)).toObject().value("channel_name").toString();
                 int flag =1;
                 for(auto & it:users_arr){
                     if(it->username==channelnametemp){
                         flag =0;break;
                         //means saved already
-                    }
+                    }}
                     if(flag){
-                        chat* temp=new user(channelnametemp,1);
+                        chat* temp=new channel(channelnametemp,1);
                         //1??
                         savefile(channelnametemp,2,1);
                         //1??
@@ -222,7 +220,7 @@ int main_user::check_for_new_chat(){
 
                 }
 
-            }
+
 
         }
 
@@ -251,8 +249,8 @@ int main_user::savefile(QString username,int type_id,int flag){
          doc=QJsonDocument::fromJson(file.readAll());
          obj=doc.object();
          numb=obj.value("number").toInt();
-         file.remove();
          file.close();
+         file.remove();
          obj["number"]=numb+1;
          obj.insert("user_id "+QString::number(numb+1),username);
          obj.insert("type_id "+QString::number(numb+1),type_id);
@@ -268,7 +266,6 @@ int main_user::savefile(QString username,int type_id,int flag){
      obj.insert("token",token);
      obj.insert("password",password);
      obj.insert("username",this->username);
-     obj.insert("saved_date",saved_date);
      obj.insert("number",numb+1);
      obj.insert("user_id "+QString::number(numb+1),username);
      obj.insert("type_id "+QString::number(numb+1),type_id);

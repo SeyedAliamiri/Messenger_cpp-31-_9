@@ -84,9 +84,23 @@ void main_page::on_member_list_itemClicked(QListWidgetItem *item)
 {
 
     QVector<Message> messages;
-    messages=m->users_arr[ui->member_list->currentRow()]->messages;
+    int num=0;
+    for(auto& it:m->users_arr){
+
+        if(it->type_id()==this->member_list_type_id){
+            if(num==ui->member_list->currentRow()){
+                clicked_chat=it;
+                messages=it->show_messages();
+                break;
+            }
+            ++num;
+        }
+
+
+    }
+
     set_messages_graphicview(messages);
-    clicked_chat=m->users_arr[ui->member_list->currentRow()];
+
 }
 
 QString main_page::messageto_html(Message message)

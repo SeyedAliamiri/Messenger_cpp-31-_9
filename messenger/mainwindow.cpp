@@ -89,6 +89,7 @@ void MainWindow::login(QString username, QString password)
                   QJsonObject obj;
                   obj.insert("username",username);
                   obj.insert("token",token);
+                  obj.insert("number",0);
                   qDebug()<<token;
                   qDebug()<<jsonDoc;
                   obj.insert("password",password);
@@ -182,7 +183,7 @@ public:
                m->m->check_for_new_chat();
 
            }
-            sleep(10000);
+           sleep(1000);
        }
 
    }
@@ -197,9 +198,11 @@ void MainWindow::start_main_page(){
     main_page * m_p=new main_page(m);
     QObject::connect(m,SIGNAL(find_new_message(chat*)),m_p,SLOT(new_message(chat*)));
     QObject::connect(m,SIGNAL(find_new_member(chat*)),m_p,SLOT(new_member(chat*)));
-    new_thread* t1=new new_thread(this);
-    t1->start();
+    //new_thread* t1=new new_thread(this);
+    //t1->start();
     m_p->show();
+    m->receive_message();
+    m->check_for_new_chat();
 
 }
 

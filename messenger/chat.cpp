@@ -17,6 +17,7 @@ chat::chat(QString user_name,int flag_able_tosend) : username(user_name)
 int chat::read_file(){
 
     QFile file(username+".json");
+    if(file.exists()){
     if(file.open(QIODevice::ReadOnly)){
     QByteArray data;
     data=file.readAll();
@@ -41,6 +42,8 @@ int chat::read_file(){
         //means file doesnt exist
         return 0;
     }
+    }
+    return 0;
 }
 
 //thread
@@ -88,7 +91,7 @@ int chat::save_file(Message new_message){
     //means file doesnt exist
         if(file.open(QIODevice::WriteOnly)){
         QJsonObject json_obj;
-        json_obj.value("number")=1;
+        json_obj.insert("number",1);
         QJsonObject new_data;
         new_data.insert("text",new_message.text);
         new_data.insert("message_date",new_message.message_date);

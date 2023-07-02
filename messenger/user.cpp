@@ -37,7 +37,7 @@ int user::send_message(QString message, QString token) {
 
 int user::receive_message(QString token){
 
-    while(true){
+
         QString date = "";
         if(saved_date != ""){
             date = "&date=" + changedateformat(saved_date);
@@ -50,25 +50,39 @@ int user::receive_message(QString token){
 
         QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
                   if (reply->error()) { qDebug() << reply->errorString(); return; }
-                QByteArray data = reply->readAll();
-                QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
-                QJsonObject jsonObj = jsonDoc.object();
+                  if (reply->error()) { qDebug() << reply->errorString(); return; }
+                      QByteArray data = reply->readAll();
+                      QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+                      QJsonObject jsonObj = jsonDoc.object();
+
+                      QString s=jsonObj.value("message").toString();
+                      std::string number_str=s.toStdString().substr(11);
+                      int num=0;
+                      for(int i=0;;++i){
+                          if('0'<=number_str[i]&&number_str[i]<='9'){
+                              num=num*10+number_str[i]-48;
+
+                          }
+                          else break;
+
+                      }
+
+                      for(int i=0;i<num;++i){
+                          Message msg;
+                          msg.message_date =jsonObj.value("block "+QString::number(i)).toObject().value("date").toString();
+                          msg.sender_userid = jsonObj.value("block "+QString::number(i)).toObject().value("src").toString();
+                          msg.text = jsonObj.value("block "+QString::number(i)).toObject().value("body").toString();
+                          flag_read=0;
+                          emit new_message(this);
+                          save_file(msg);
+
+                      }
 
 
-               if( jsonObj.constFind("block 0") != jsonObj.end()){
-                   QJsonObject block0 = jsonObj.value("block 0").toObject();
-                   Message msg;
-                   msg.message_date = block0.value("date").toString();
-                   msg.sender_userid = block0.value("src").toString();
-                   msg.text = block0.value("body").toString();
-                   flag_read=0;
-                   emit new_message(this);
 
-                   save_file(msg);
-               }
 
             });
-    }
+
     return 1;
 }
 const QVector<Message>& user::show_messages(){
