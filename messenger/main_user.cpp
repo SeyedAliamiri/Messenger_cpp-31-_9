@@ -95,7 +95,7 @@ int main_user::check_for_new_chat(){
 
             }
             for(int i= 0;i<num;++i){
-                QString usernametemp=jsonObj.value("block "+QString::number(i)).toObject().value("user_name").toString();
+                QString usernametemp=jsonObj.value("block "+QString::number(i)).toObject().value("src").toString();
                 int flag =1;
                 for(auto & it:users_arr){
                     if(it->username==usernametemp&&it->type_id()==1){

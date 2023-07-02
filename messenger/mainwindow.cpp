@@ -6,6 +6,7 @@
 #include<QFile>
 #include"main_page.h"
 #include<QThread>
+#include<QTimer>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -182,8 +183,9 @@ public:
                m->m->receive_message();
                m->m->check_for_new_chat();
 
+
            }
-           sleep(1000);
+           sleep(1500);
        }
 
    }
@@ -198,13 +200,21 @@ void MainWindow::start_main_page(){
     main_page * m_p=new main_page(m);
     QObject::connect(m,SIGNAL(find_new_message(chat*)),m_p,SLOT(new_message(chat*)));
     QObject::connect(m,SIGNAL(find_new_member(chat*)),m_p,SLOT(new_member(chat*)));
-    //new_thread* t1=new new_thread(this);
-    //t1->start();
+    QTimer* t=new QTimer();
+    connect(t,SIGNAL(timeout()),this,SLOT(update_()));
+    t->start(1000);
     m_p->show();
     m_p->setWindowIcon(QIcon(":/new/prefix1/appicon.png"));
     m_p->setWindowTitle("messenger");
-    m->receive_message();
-    m->check_for_new_chat();
+    //m->receive_message();
+    //m->check_for_new_chat();
 
 }
 
+void MainWindow::update_(){
+
+    m->receive_message();
+    m->check_for_new_chat();
+
+
+}

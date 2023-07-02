@@ -24,6 +24,7 @@ public slots:
     void login(QString username, QString password);
     void already_have();
     void log_in_back();
+    void update_();
 private:
 
     void start_main_page();

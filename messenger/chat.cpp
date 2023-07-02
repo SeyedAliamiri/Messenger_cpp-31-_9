@@ -30,7 +30,7 @@ int chat::read_file(){
         Message message_struct;
         message_struct.text=temp.value("text").toString();
         message_struct.sender_userid=temp.value("sender_userid").toString();
-        message_struct.message_date=temp.value("date").toString();
+        saved_date=message_struct.message_date=temp.value("message_date").toString();
         messages.push_back(message_struct);
 
 
@@ -48,7 +48,7 @@ int chat::read_file(){
 
 //thread
 int chat::save_file(Message new_message){
-    QFile file(username+".JSON");
+    QFile file(username+".json");
 
     messages.push_back(new_message);
     saved_date=new_message.message_date;
@@ -58,18 +58,16 @@ int chat::save_file(Message new_message){
         data=file.readAll();
         QJsonDocument json_data=QJsonDocument::fromJson(data);
         QJsonObject json_obj=json_data.object();
-        json_obj.value("number")=json_obj.value("number").toInt()+1;
+        json_obj["number"]=json_obj.value("number").toInt()+1;
         QJsonObject new_data;
         new_data.insert("text",new_message.text);
         new_data.insert("message_date",new_message.message_date);
         new_data.insert("sender_userid",new_message.sender_userid);
         json_obj.insert("message "+ QString::number( json_obj.value("number").toInt()),new_data);
         file.close();
-        file.open(QIODevice::WriteOnly);
         file.remove();
-        file.close();
         file.open(QIODevice::WriteOnly);
-        QJsonDocument new_doc={};
+        QJsonDocument new_doc;
         new_doc.setObject(json_obj);
         file.write(new_doc.toJson());
         file.close();
