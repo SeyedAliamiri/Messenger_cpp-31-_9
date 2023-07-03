@@ -22,6 +22,9 @@ main_page::main_page(main_user* mainuser,QWidget *parent) :
 
     ui->scrollArea->setWidget(ui->widget_2);
     member_list_type_id=4;
+    ui->network_status->hide();
+    ui->network->setWindowIcon(QIcon(":/new/prefix1/picc/wifi.png"));
+   // ui->network->setText("Network Status: connected")
 
     QObject::connect(m, SIGNAL(messagebox(QString, QString, bool)), this,SLOT(show_messagebox(QString, QString, bool)));
     on_all_button_clicked();
@@ -396,6 +399,19 @@ void main_page::on_newuserok_clicked()
 void main_page::on_pushButton_clicked()
 {
     emit log_out();
+
+}
+
+void main_page::slot_network(bool connected)
+{
+    if(connected){
+        ui->network->setWindowIcon(QIcon(":/new/prefix1/picc/wifi.png"));
+        ui->network->setText("Network Status: connected");
+    }
+    else{
+        ui->network->setWindowIcon(QIcon(":/new/prefix1/picc/wifinot.png"));
+        ui->network->setText("Network Status: disconnected");
+    }
 
 }
 

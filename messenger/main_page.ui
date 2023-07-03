@@ -29,7 +29,7 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,2">
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,6,0,1">
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0,6,0,1">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <property name="spacing">
@@ -112,7 +112,27 @@
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="network">
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(231, 239, 255);</string>
+          </property>
+          <property name="text">
+           <string>network status</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QListWidget" name="member_list">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="styleSheet">
            <string notr="true">background-color: rgb(231, 239, 255);</string>
           </property>

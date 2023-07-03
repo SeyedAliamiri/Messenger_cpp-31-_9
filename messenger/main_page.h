@@ -64,6 +64,7 @@ private slots:
     void on_newuserok_clicked();
 
     void on_pushButton_clicked();
+    void slot_network(bool connected);
 
 private:
     main_user* m;
