@@ -6,6 +6,9 @@ group name:c++(=31)
 
 group number=9
 
+
+
+
 #MESSENGER :
 
 STAY IN TOUCH WITH YOUR FRIENDS
@@ -18,7 +21,14 @@ CREATE YOUR OWN CHANNEL AND PUBLISH WHATEVER YOU WANT
 
 
 
+
+
+
+
 #SAVE DATA IN HARD DISK:
+
+
+DATA storage in json files
 
 when someone logs into program  , a file named main_user.json will be created
 
@@ -27,10 +37,21 @@ and we have 3 folders for save users,chats and groups information(everyyhing has
 if you log in you can use program until you log out
 
 
+
+
+
+
+
 #SERVER STATUS :
 
 server responses slowly  so please wait for changes and  execute commands, and please dont click again just wait a few seconds .we are so sorry about that but
 that isnt our mistake (server was written) 
+
+
+
+
+
+
 
 
 #CLEAN ARCHITECTUrE:
@@ -84,6 +105,11 @@ new_user
 ......
 
 
+
+
+
+
+
 #POLYMORPHISM:
 
 most of classes inherits from QObject
@@ -92,10 +118,16 @@ chat class is an abstract class that channel,group,user inherit from
 
 
 
-
 #THREAD:
-
 every 1500 ms program updates(server responses slowly ) 
+
+
+#INSTALL
+
+you can easily install my program to make use from app easier
+just extract messenger installer.zip and run messenger.exe to install app everywhere you want and then just run application and enjoy :)
+
+
 
 
 
