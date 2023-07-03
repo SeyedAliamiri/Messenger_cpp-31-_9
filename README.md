@@ -33,6 +33,65 @@ server responses slowly  so please wait for changes and  execute commands, and p
 that isnt our mistake (server was written) 
 
 
+#CLEAN ARCHITECTUrE:
+
+we built our program bassed on clean architecture principles:
+#ENTITIES classes:
+
+chat,user,group,channel,main_user
+
+#USE CASES:
+
+send and receive message
+create group and channel
+join into group and channel
+log out
+log in
+sign up
+find user
+.
+.
+......
+
+
+#CONTOROLER class:
+
+Mainwindow
+
+
+#VIEW classes(UI)
+
+main_page
+
+sign_up
+
+log_in
+
+create_channe
+
+create_group
+
+join_group
+
+join_channel
+
+new_user
+
+.
+.
+.
+
+......
+
+
+#POLYMORPHISM:
+
+most of classes inherits from QObject
+
+chat class is an abstract class that channel,group,user inherit from
+
+
+
 
 #THREAD:
 
