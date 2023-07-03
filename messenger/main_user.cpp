@@ -14,6 +14,7 @@ main_user::main_user(QString tokenn,QString user_name,QString pass_word)
     username = user_name;
     password = pass_word;
     saved_date="";
+    flag_log_in=1;
     readfile();
 
 
@@ -108,9 +109,15 @@ int main_user::check_for_new_chat(){
                     if(flag){
                         chat* temp=new user(usernametemp,1);
                         QObject::connect(temp,SIGNAL(new_message(chat*)),this,SLOT(get_new_message(chat*)));
-                        emit find_new_member(temp);
                         savefile(usernametemp,1,1);
                         users_arr.push_back(temp);
+
+
+
+
+
+                        emit find_new_member(temp);
+
 
                     }
                 }
@@ -157,8 +164,11 @@ int main_user::check_for_new_chat(){
                         chat* temp=new group(groupnametemp,1);
                          savefile(groupnametemp,2,1);
                          QObject::connect(temp,SIGNAL(new_message(chat*)),this,SLOT(get_new_message(chat*)));
-                         emit find_new_member(temp);
                         users_arr.push_back(temp);
+
+
+                        emit find_new_member(temp);
+
 
                     }
 
@@ -214,8 +224,12 @@ int main_user::check_for_new_chat(){
                         savefile(channelnametemp,3,1);
                         //1??
                         QObject::connect(temp,SIGNAL(new_message(chat*)),this,SLOT(get_new_message(chat*)));
-                        emit find_new_member(temp);
                         users_arr.push_back(temp);
+
+
+
+                        emit find_new_member(temp);
+
 
                     }
 
@@ -299,8 +313,7 @@ int main_user::send_message(QString message, chat* chat1){
 
 
 int main_user::receive_message(){
-    //i.l.u :)
-    //m.t :)
+
     for(auto & it:users_arr){
 
         it->receive_message(token);
@@ -526,6 +539,10 @@ void main_user::log_out(){
             QString message = jsonObj.value("message").toString();
 
             if(code == "200"){
+                flag_log_in=0;
+
+
+
                 //success
                 emit messagebox("Success", message, 1);
                 emit loged_out();

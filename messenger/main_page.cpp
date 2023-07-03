@@ -262,9 +262,9 @@ void main_page::on_users_button_clicked()
 void main_page::new_member(chat* C){
     if(member_list_type_id==4||member_list_type_id==C->type_id()){
         if(member_list_type_id==4){
-            on_all_button_clicked();
+           on_all_button_clicked();
         }
-            else if(member_list_type_id==2){
+         else if(member_list_type_id==2){
             on_group_button_clicked();
 
         }

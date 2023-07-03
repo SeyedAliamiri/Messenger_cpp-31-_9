@@ -45,7 +45,7 @@ private:
     QVector<chat*> show_Group_list();
     QVector<chat*> show_all();
     int sort();
-
+    int flag_log_in;
     void creatgroup(QString group_name,QString group_title="");
     void creatchannel(QString channel_name,QString channel_title="");
     void joingroup(QString group_name);

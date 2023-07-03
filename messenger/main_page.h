@@ -30,6 +30,7 @@ private slots:
      void new_message(chat*);
 
      void new_member(chat*);
+
     void on_all_button_clicked();
 
     void on_member_list_itemClicked(QListWidgetItem *item);

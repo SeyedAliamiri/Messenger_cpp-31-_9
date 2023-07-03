@@ -195,9 +195,9 @@ void MainWindow::update_(){
 
 }
 void MainWindow::log_out_slot(){
-    if(m->token!="")
+    if(m->flag_log_in){
     m->log_out();
-
+    }
 };
 void MainWindow::loged_out_signal(){
     t->stop();
