@@ -14,10 +14,12 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(31, 59, 120);
-</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(44, 76, 145);</string>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
      <widget class="QWidget" name="widget_2" native="true">
@@ -105,14 +107,14 @@
         <item>
          <widget class="QTextBrowser" name="network_status">
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(183, 215, 255);</string>
+           <string notr="true">background-color: rgb(231, 239, 255);</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QListWidget" name="member_list">
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(183, 215, 255);</string>
+           <string notr="true">background-color: rgb(231, 239, 255);</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -127,6 +129,9 @@
         </item>
         <item>
          <widget class="QGroupBox" name="newusergroupBox">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);</string>
+          </property>
           <property name="title">
            <string>enter username:</string>
           </property>
@@ -139,14 +144,16 @@
              <item>
               <widget class="QLineEdit" name="newuserlineEdit">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 255, 255);</string>
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="newuserok">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 255, 255);</string>
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
                </property>
                <property name="text">
                 <string>ok</string>
@@ -156,7 +163,8 @@
              <item>
               <widget class="QPushButton" name="newusercancel">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 255, 255);</string>
+                <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
                </property>
                <property name="text">
                 <string>cancel</string>

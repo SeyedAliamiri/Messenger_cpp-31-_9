@@ -7,5 +7,9 @@
         <file>channel.png</file>
         <file>group.png</file>
         <file>user.png</file>
+        <file>picc/lock.png</file>
+        <file>picc/logout.png</file>
+        <file>picc/wifi.png</file>
+        <file>picc/wifinot.png</file>
     </qresource>
 </RCC>

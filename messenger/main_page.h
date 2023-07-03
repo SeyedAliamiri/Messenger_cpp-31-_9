@@ -73,7 +73,7 @@ private:
     Ui::main_page *ui;
     QVector<QHBoxLayout*> mesageslayout;
     QVector<QTextBrowser*> mesagestext;
-    static QString messageto_html(Message message);
+    static QString messageto_html(Message message,bool me);
 };
 
 #endif // MAIN_PAGE_H

@@ -28,6 +28,7 @@ main_page::main_page(main_user* mainuser,QWidget *parent) :
     ui->create_group->setIcon(QIcon(":/new/prefix1/add_g.png"));
     ui->create_channel->setIcon(QIcon(":/new/prefix1/add.jpg"));
     ui->new_user->setIcon(QIcon(":/new/prefix1/add_u.png"));
+    ui->pushButton->setIcon(QIcon(":/new/prefix1/picc/logout.png"));
     ui->newusergroupBox->hide();
 
 
@@ -127,12 +128,20 @@ void main_page::on_member_list_itemClicked(QListWidgetItem *item)
 
 }
 
-QString main_page::messageto_html(Message message)
+QString main_page::messageto_html(Message message, bool me)
 {
+    QString color;
+    if(me){
+        color ="background-color: rgb(231, 239, 255);";
+    }
+    else{
+        color="background-color: rgb(255, 255, 255);";
+    }
+
     QString result = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd\">"
     "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">"
     "p, li { white-space: pre-wrap; }"
-    "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">"
+    "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal; " + color + "\">"
     "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">"
             "<span style=\" font-size:11pt; color:#891ace;\">" + message.sender_userid + ":</span></p>";
     QList<QString> splitedstring = message.text.split('\n');
@@ -167,13 +176,18 @@ void main_page::set_messages_graphicview(QVector<Message> messages){
         QHBoxLayout* newlayout = new QHBoxLayout();
         QSpacerItem* space = new QSpacerItem(200,20);
         QTextBrowser* text = new QTextBrowser(this);
-        text->setHtml(messageto_html(*it));
-        text->setMinimumSize(100,100);
+
+
         if( it->sender_userid == m->username ){    //?
+            text->setHtml(messageto_html(*it,1));
+            text->setMinimumSize(100,100);
             newlayout->addSpacerItem(space);
             newlayout->addWidget(text);
+
         }
         else{
+            text->setHtml(messageto_html(*it,0));
+            text->setMinimumSize(100,100);
             newlayout->addWidget(text);
             newlayout->addSpacerItem(space);
         }

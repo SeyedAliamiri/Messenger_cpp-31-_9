@@ -7,6 +7,7 @@ log_in::log_in(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Login");
+    this->setWindowIcon(QIcon(":/new/prefix1/picc/lock.png"));
 }
 
 log_in::~log_in()
