@@ -1,6 +1,7 @@
 #include "group.h"
 #include"chat.h"
 #include<QFile>
+#include<QDir>
 group::group(QString user_name,int flag_able_tosend): chat(user_name,flag_able_tosend)
 {
 group::read_file();
@@ -43,7 +44,7 @@ int group::save_file(Message new_message){
     }
 
 
-    QFile file(username+".json");
+    QFile file(QDir::currentPath()+"/groups/" +username+".json");
 
     messages.push_back(new_message);
     saved_date=new_message.message_date;
@@ -108,7 +109,7 @@ int group::save_file(Message new_message){
 
 
 int group::read_file(){
-        QFile file(username+".json");
+        QFile file(QDir::currentPath()+"/groups/" +username+".json");
         if(file.exists()){
         if(file.open(QIODevice::ReadOnly)){
         QByteArray data;

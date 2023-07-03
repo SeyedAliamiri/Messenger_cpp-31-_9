@@ -1,5 +1,6 @@
 #include "channel.h"
 #include"chat.h"
+#include <QDir>
 #include<QFile>
 
 
@@ -45,7 +46,7 @@ int channel::save_file(Message new_message){
     }
 
 
-    QFile file(username+".json");
+    QFile file(QDir::currentPath()+"/channels/" +username+".json");
 
     messages.push_back(new_message);
     saved_date=new_message.message_date;
@@ -111,7 +112,7 @@ int channel::save_file(Message new_message){
 
 
 int channel::read_file(){
-        QFile file(username+".json");
+        QFile file(QDir::currentPath()+"/channels/" +username+".json");
         if(file.exists()){
         if(file.open(QIODevice::ReadOnly)){
         QByteArray data;

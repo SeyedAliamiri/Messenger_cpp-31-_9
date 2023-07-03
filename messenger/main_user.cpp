@@ -7,6 +7,7 @@
 #include"group.h"
 #include<algorithm>
 #include <QMessageBox>
+#include<QDir>
 main_user::main_user(QString tokenn,QString user_name,QString pass_word)
 {
     token = tokenn;
@@ -14,8 +15,29 @@ main_user::main_user(QString tokenn,QString user_name,QString pass_word)
     password = pass_word;
     saved_date="";
     readfile();
+    QDir* dir=new QDir(QDir::currentPath()+"/users");
+    if(!dir->exists()){
+        QDir* dir_u=new QDir(QDir::currentPath());
+        dir_u->mkdir("users");
+        delete dir_u;
+    }
+    delete dir;
+    QDir* dir2=new QDir(QDir::currentPath()+"/channels");
+    if(!dir->exists()){
+        QDir* dir_c=new QDir(QDir::currentPath());
+        dir_c->mkdir("users");
+        delete dir_c;
 
+    }
+    delete dir2;
+    QDir* dir3=new QDir(QDir::currentPath()+"/groups");
+    if(!dir->exists()){
+        QDir* dir_g=new QDir(QDir::currentPath());
+        dir_g->mkdir("users");
+        delete dir_g;
 
+    }
+    delete dir3;
 
 }
 

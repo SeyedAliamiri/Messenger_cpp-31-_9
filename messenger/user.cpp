@@ -1,6 +1,7 @@
 #include "user.h"
 #include"chat.h"
 #include<QFile>
+#include<QDir>
 user::user(QString user_name,int flag_able_tosend): chat(user_name,flag_able_tosend)
 {
 user::read_file();
@@ -51,7 +52,7 @@ int user::save_file(Message new_message){
     }
 
 
-    QFile file(username+".json");
+    QFile file(QDir::currentPath()+"/users/" +username+".json");
 
     messages.push_back(new_message);
     saved_date=new_message.message_date;
@@ -115,7 +116,7 @@ int user::save_file(Message new_message){
 }
 
 int user::read_file(){
-        QFile file(username+".json");
+        QFile file(QDir::currentPath()+"/users/" +username+".json");
         if(file.exists()){
         if(file.open(QIODevice::ReadOnly)){
         QByteArray data;
