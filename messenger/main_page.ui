@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(31, 59, 120);
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
@@ -40,6 +44,9 @@
               <pointsize>13</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="text">
              <string>all</string>
             </property>
@@ -52,6 +59,9 @@
               <family>Berlin Sans FB Demi</family>
               <pointsize>13</pointsize>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
              <string>groups</string>
@@ -66,6 +76,9 @@
               <pointsize>13</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="text">
              <string>channels</string>
             </property>
@@ -79,6 +92,9 @@
               <pointsize>13</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="text">
              <string>users</string>
             </property>
@@ -87,10 +103,17 @@
          </layout>
         </item>
         <item>
-         <widget class="QTextBrowser" name="network_status"/>
+         <widget class="QTextBrowser" name="network_status">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(183, 215, 255);</string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QListWidget" name="member_list">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(183, 215, 255);</string>
+          </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -114,10 +137,17 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="QLineEdit" name="newuserlineEdit"/>
+              <widget class="QLineEdit" name="newuserlineEdit">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);</string>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QPushButton" name="newuserok">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);</string>
+               </property>
                <property name="text">
                 <string>ok</string>
                </property>
@@ -125,6 +155,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="newusercancel">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);</string>
+               </property>
                <property name="text">
                 <string>cancel</string>
                </property>
@@ -157,6 +190,9 @@
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="text">
              <string>create group</string>
             </property>
@@ -175,6 +211,9 @@
               <family>Berlin Sans FB Demi</family>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
              <string>new user</string>
@@ -195,6 +234,9 @@
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="text">
              <string>join group</string>
             </property>
@@ -213,6 +255,9 @@
               <family>Berlin Sans FB Demi</family>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
              <string>create channel</string>
@@ -233,6 +278,9 @@
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="text">
              <string>join channel</string>
             </property>
@@ -245,6 +293,9 @@
               <family>Berlin Sans FB Demi</family>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
              <string>log out</string>
@@ -282,6 +333,9 @@
               <pointsize>18</pointsize>
               <bold>true</bold>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
              <string/>
@@ -342,6 +396,9 @@
               <pointsize>16</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="html">
              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -361,6 +418,9 @@ p, li { white-space: pre-wrap; }
               <family>Berlin Sans FB Demi</family>
               <pointsize>16</pointsize>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
              <string>send</string>

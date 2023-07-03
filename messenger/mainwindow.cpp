@@ -91,8 +91,14 @@ void MainWindow::login(QString username, QString password)
               QString token;
 
               if(code == "200"){
-                  QMessageBox::information(this, "Success", message, QMessageBox::Ok);
                   token = jsonObj.value("token").toString();
+                  if(token==""){
+                      QMessageBox::critical(this, "Fail", message, QMessageBox::Ok);
+                      return;
+                  }
+
+                  QMessageBox::information(this, "Success", message, QMessageBox::Ok);
+
                   QFile file("main_user.json");
                   QJsonObject obj;
                   obj.insert("username",username);
