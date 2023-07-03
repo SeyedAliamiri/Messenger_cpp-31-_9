@@ -1,4 +1,4 @@
-# AP_project
+# AP Project
 
 This is Advanced Programming project.
 
