@@ -201,12 +201,12 @@ if(C->type_id()==member_list_type_id||member_list_type_id==4){
     }
     else
         on_users_button_clicked();
-
+    if(clicked_chat!=nullptr){
     if(clicked_chat->username==C->username&&clicked_chat->type_id()==C->type_id()){
         set_messages_graphicview(C->show_messages());
 
     }
-
+}
 
 }
 

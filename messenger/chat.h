@@ -38,8 +38,8 @@ protected:
     QVector<Message> messages;//is this really needed???
     bool able_to_send;
     bool is_favorite;
-    int read_file();
-    int save_file(Message);
+    virtual int read_file()=0;
+    virtual int save_file(Message)=0;
     virtual int send_message(QString message, QString token)=0;//zz
     virtual int receive_message(QString token)=0;
     virtual const QVector<Message>& show_messages()=0;

@@ -134,6 +134,7 @@ int main_user::check_for_new_chat(){
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
         QJsonObject jsonObj = jsonDoc.object();
         QString code= jsonObj.value("code").toString();
+        qDebug()<<jsonDoc;
         if(code.toInt()==200){
             std::string number_str=jsonObj.value("message").toString().toStdString().substr(12);
             int num=0;
@@ -149,7 +150,7 @@ int main_user::check_for_new_chat(){
                 QString groupnametemp=jsonObj.value("block "+QString::number(i)).toObject().value("group_name").toString();
                 int flag =1;
                 for(auto & it:users_arr){
-                    if(it->username==groupnametemp){
+                    if(it->username==groupnametemp&&it->type_id()==2){
                         flag =0;break;
                         //means saved already
                     }}
@@ -189,6 +190,7 @@ int main_user::check_for_new_chat(){
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
         QJsonObject jsonObj = jsonDoc.object();
         QString code= jsonObj.value("code").toString();
+        qDebug()<<jsonDoc;
         if(code.toInt()==200){
             std::string number_str=jsonObj.value("message").toString().toStdString().substr(12);
             int num=0;
@@ -204,7 +206,7 @@ int main_user::check_for_new_chat(){
                 QString channelnametemp=jsonObj.value("block "+QString::number(i)).toObject().value("channel_name").toString();
                 int flag =1;
                 for(auto & it:users_arr){
-                    if(it->username==channelnametemp){
+                    if(it->username==channelnametemp&&it->type_id()==3){
                         flag =0;break;
                         //means saved already
                     }}
