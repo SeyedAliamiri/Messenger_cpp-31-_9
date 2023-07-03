@@ -13,18 +13,18 @@ group number = 9
 
 # Messenger
 
-•  Stay in touch with your friends
+**•  Stay in touch with your friends**
 
-•  Join to groups and channels
+**•  Join to groups and channels**
 
-•  Join your friends group and chat with them
+**•  Join your friends group and chat with them**
 
-•  Create your own channel and publish whatever you want 
-
-
+**•  Create your own channel and publish whatever you want** 
 
 
-## SAVE DATA IN HARD DISK
+
+
+## Save Data In Hard Disk
 
 •  DATA storage in json files
 
@@ -39,7 +39,7 @@ If you log in you can use program until you log out.
 
 
 
-## SERVER
+## Server
 
 Server responses slowly  so please wait for changes and  execute commands, and please dont click again just wait a few seconds.
 
@@ -48,14 +48,14 @@ Connection with server is through http request and response.
 
 
 
-## CLEAN ARCHITECTURE
+## Clean Architecture
 
 We built our program based on clean architecture principles:
 
-**ENTITIES classes:** 
+**Entity classes:** 
 •  chat, user, group, channel, main_user
 
-**USE CASES:**
+**Use Cases:**
 •  send and receive message
 •  create group and channel
 •  join into group and channel
@@ -65,10 +65,10 @@ We built our program based on clean architecture principles:
 •  find user
 ...
 
-**CONTOROLER class:**
+**Controller class:**
 •    Mainwindow
 
-**VIEW classes(UI):**
+**View classes(UI):**
 
 •  main_page
 •  sign_up
