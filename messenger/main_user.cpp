@@ -81,7 +81,7 @@ int main_user::check_for_new_chat(){
 
     //int u_returncode = 0;
     QObject::connect(u_manager, &QNetworkAccessManager::finished, this, [&](QNetworkReply* u_reply) {
-        if (u_reply->error()) { qDebug() << u_reply->errorString(); return; }
+        if (u_reply->error()) { return; }
 
         QByteArray data = u_reply->readAll();
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
@@ -135,7 +135,7 @@ int main_user::check_for_new_chat(){
 
     //int g_returncode = 0;
     QObject::connect(g_manager, &QNetworkAccessManager::finished, this, [&](QNetworkReply *g_reply) {
-              if (g_reply->error()) { qDebug() << g_reply->errorString(); return; }
+              if (g_reply->error()) {  return; }
 
         QByteArray data = g_reply->readAll();
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
@@ -193,7 +193,7 @@ int main_user::check_for_new_chat(){
 
     //int c_returncode = 0;
     QObject::connect(c_manager, &QNetworkAccessManager::finished, this, [&](QNetworkReply *c_reply) {
-              if (c_reply->error()) { qDebug() << c_reply->errorString(); return; }
+              if (c_reply->error()) {return; }
 
         QByteArray data = c_reply->readAll();
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
@@ -413,7 +413,7 @@ void main_user::creatgroup(QString group_name,QString group_title)
     manager->get(request);
 
     QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
-              if (reply->error()) { qDebug() << reply->errorString(); return; }
+              if (reply->error()) {  return; }
             QByteArray data = reply->readAll();
             QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
             QJsonObject jsonObj = jsonDoc.object();
@@ -445,7 +445,7 @@ void main_user::creatchannel(QString channel_name, QString channel_title)
     manager->get(request);
 
     QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
-              if (reply->error()) { qDebug() << reply->errorString(); return; }
+              if (reply->error()) {  return; }
             QByteArray data = reply->readAll();
             QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
             QJsonObject jsonObj = jsonDoc.object();
@@ -472,7 +472,7 @@ void main_user::joingroup(QString group_name)
     manager->get(request);
 
     QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
-              if (reply->error()) { qDebug() << reply->errorString(); return; }
+              if (reply->error()) {  return; }
             QByteArray data = reply->readAll();
             QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
             QJsonObject jsonObj = jsonDoc.object();
@@ -499,7 +499,7 @@ void main_user::joinchannel(QString channel_name)
     manager->get(request);
 
     QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
-              if (reply->error()) { qDebug() << reply->errorString(); return; }
+              if (reply->error()) {  return; }
             QByteArray data = reply->readAll();
             QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
             QJsonObject jsonObj = jsonDoc.object();
@@ -531,7 +531,7 @@ void main_user::log_out(){
     manager->get(request);
 
     QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
-              if (reply->error()) { qDebug() << reply->errorString(); return; }
+              if (reply->error()) {  return; }
             QByteArray data = reply->readAll();
             QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
             QJsonObject jsonObj = jsonDoc.object();

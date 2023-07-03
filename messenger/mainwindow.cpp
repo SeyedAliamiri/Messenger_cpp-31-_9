@@ -48,7 +48,7 @@ void MainWindow::signup(QString username, QString password, QString firstname, Q
     QObject::connect(manager, &QNetworkAccessManager::finished,
           this, [=](QNetworkReply *reply) {
               if (reply->error()) {
-                  qDebug() << reply->errorString();
+
                   return;
               }
 
@@ -81,7 +81,7 @@ void MainWindow::login(QString username, QString password)
     manager->get(request);
 
     QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
-              if (reply->error()) { qDebug() << reply->errorString(); return; }
+              if (reply->error()) {  return; }
 
               QByteArray data = reply->readAll();
               QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
