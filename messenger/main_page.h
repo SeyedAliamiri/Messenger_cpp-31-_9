@@ -22,7 +22,8 @@ public:
     void set_member_list(QVector<chat*>);
     void set_messages_graphicview(QVector<Message>);
 
-
+signals:
+    void log_out();
 
 
 private slots:
@@ -60,6 +61,8 @@ private slots:
     void on_newusercancel_clicked();
 
     void on_newuserok_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     main_user* m;

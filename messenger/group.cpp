@@ -193,3 +193,14 @@ int group::receive_message(QString token) {
 const QVector<Message>& group::show_messages(){
     return messages;
 }
+
+
+group::~group(){
+    QFile file(QDir::currentPath()+"/groups/" +username+".json");
+    if(file.exists()){
+        file.remove();
+
+    }
+
+
+}

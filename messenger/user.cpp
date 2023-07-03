@@ -203,3 +203,14 @@ const QVector<Message>& user::show_messages(){
         return messages;
         //
 }
+user::~user(){
+    QFile file(QDir::currentPath()+"/users/" +username+".json");
+    if(file.exists()){
+
+        file.remove();
+    }
+
+
+
+
+}

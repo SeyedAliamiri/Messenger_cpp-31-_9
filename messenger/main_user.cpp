@@ -15,29 +15,7 @@ main_user::main_user(QString tokenn,QString user_name,QString pass_word)
     password = pass_word;
     saved_date="";
     readfile();
-    QDir* dir=new QDir(QDir::currentPath()+"/users");
-    if(!dir->exists()){
-        QDir* dir_u=new QDir(QDir::currentPath());
-        dir_u->mkdir("users");
-        delete dir_u;
-    }
-    delete dir;
-    QDir* dir2=new QDir(QDir::currentPath()+"/channels");
-    if(!dir->exists()){
-        QDir* dir_c=new QDir(QDir::currentPath());
-        dir_c->mkdir("users");
-        delete dir_c;
 
-    }
-    delete dir2;
-    QDir* dir3=new QDir(QDir::currentPath()+"/groups");
-    if(!dir->exists()){
-        QDir* dir_g=new QDir(QDir::currentPath());
-        dir_g->mkdir("users");
-        delete dir_g;
-
-    }
-    delete dir3;
 
 }
 
@@ -156,7 +134,6 @@ int main_user::check_for_new_chat(){
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
         QJsonObject jsonObj = jsonDoc.object();
         QString code= jsonObj.value("code").toString();
-        qDebug()<<jsonDoc;
         if(code.toInt()==200){
             std::string number_str=jsonObj.value("message").toString().toStdString().substr(12);
             int num=0;
@@ -212,7 +189,6 @@ int main_user::check_for_new_chat(){
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
         QJsonObject jsonObj = jsonDoc.object();
         QString code= jsonObj.value("code").toString();
-        qDebug()<<jsonDoc;
         if(code.toInt()==200){
             std::string number_str=jsonObj.value("message").toString().toStdString().substr(12);
             int num=0;
@@ -407,8 +383,7 @@ QVector<chat*> main_user::show_all(){
 int main_user::sort(){
     //by time
     //zz
-    std::sort(users_arr.begin() , users_arr.end() , [](const chat* a, const chat* b){ return a->saved_date<b->saved_date;});
-    std::sort(favorites.begin() , favorites.end() , [](const chat* a, const chat* b){ return a->saved_date<b->saved_date;});
+    std::sort(users_arr.begin() , users_arr.end() , [](const chat* a, const chat* b){ return a->saved_date>=b->saved_date;});
     return 1;
 }
 
@@ -535,5 +510,52 @@ void main_user::get_new_message(chat* C){
 
 }
 
+void main_user::log_out(){
+
+    QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+    QNetworkRequest request;
+    request.setUrl(QUrl("http://api.barafardayebehtar.ml:8080/logout?username=" + username + "&password=" + password));
+    manager->get(request);
+
+    QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) {
+              if (reply->error()) { qDebug() << reply->errorString(); return; }
+            QByteArray data = reply->readAll();
+            QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+            QJsonObject jsonObj = jsonDoc.object();
+            QString code = jsonObj.value("code").toString();
+            QString message = jsonObj.value("message").toString();
+
+            if(code == "200"){
+                //success
+                emit messagebox("Success", message, 1);
+                emit loged_out();
+            }
+            else{
+               //fail
+                emit messagebox("Fail", message, 0);
+            }
+        });
 
 
+};
+
+main_user::~main_user(){
+    QFile file("main_user.json");
+    if(file.exists()){
+
+       file.remove();
+
+    }
+
+    for(auto &it:users_arr){
+
+        delete it;
+
+
+    }
+
+
+
+
+
+}

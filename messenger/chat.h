@@ -25,7 +25,7 @@ class chat :public QObject
 public:
     chat(QString,int);
    virtual int type_id()=0; //1->user 2->group 3->channel
-
+   virtual ~chat()=default;
 signals:
     void new_message(chat*);
     void  messagebox(QString, QString, bool);

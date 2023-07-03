@@ -25,8 +25,11 @@ public slots:
     void already_have();
     void log_in_back();
     void update_();
+    void log_out_slot();
+    void loged_out_signal();
 private:
-
+    main_page * m_p;
+    QTimer* t;
     void start_main_page();
     Ui::MainWindow *ui;
     log_in* loginwindow;

@@ -9,6 +9,7 @@ class channel: public chat
 public:
 
     channel(QString ,int);
+    ~channel();
     int type_id() override;
     int send_message(QString message, QString token) override;
     int receive_message(QString token) override;

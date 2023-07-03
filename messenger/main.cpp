@@ -28,9 +28,8 @@ int main(int argc, char *argv[])
 
     }
     delete dir3;
-    MainWindow w;
-    w.setWindowIcon(QIcon(":/new/prefix1/appicon.png"));
-    w.setWindowTitle("messenger");
-    w.first_check();
+    MainWindow *w=new MainWindow();
+    w->setWindowIcon(QIcon(":/new/prefix1/appicon.png"));
+    w->setWindowTitle("messenger");
     return a.exec();
 }

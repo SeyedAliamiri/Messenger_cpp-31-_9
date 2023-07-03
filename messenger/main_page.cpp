@@ -111,6 +111,7 @@ void main_page::on_member_list_itemClicked(QListWidgetItem *item)
         if( it->type_id()==this->member_list_type_id || member_list_type_id == 4){
             if(num==ui->member_list->currentRow()){
                 clicked_chat=it;
+                it->flag_read=1;
                 messages=it->show_messages();
                 break;
             }
@@ -121,6 +122,8 @@ void main_page::on_member_list_itemClicked(QListWidgetItem *item)
     }
 
     set_messages_graphicview(messages);
+    item->setCheckState(Qt::Unchecked);
+
 
 }
 
@@ -373,5 +376,12 @@ void main_page::on_newuserok_clicked()
         ui->newuserlineEdit->clear();
         ui->newusergroupBox->hide();
     }
+}
+
+
+void main_page::on_pushButton_clicked()
+{
+    emit log_out();
+
 }
 

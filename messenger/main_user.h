@@ -18,24 +18,23 @@ class main_user :public QObject
 
 public:
     main_user(QString tokenn,QString user_name,QString pass_word);
-
+    ~main_user();
 
 signals:
      void  find_new_message(chat*);
      void  find_new_member(chat*);
      void  messagebox(QString, QString, bool);
-
+     void  loged_out();
 public slots:
      void  get_new_message(chat*);
 
 private:
-
+    void log_out();
     QString token;
     QString username;
     QString password;
     QString saved_date;
     QVector<chat*> users_arr;
-    QVector<chat*> favorites;
     int readfile();
     int savefile(QString username,int type_id,int flag);
     int send_message(QString, chat*);

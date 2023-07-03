@@ -8,6 +8,7 @@ class user: public chat
 
 public:
     user(QString,int);
+    ~user();
     int type_id() override;
     int send_message(QString message, QString token) override;
     int receive_message(QString token) override;

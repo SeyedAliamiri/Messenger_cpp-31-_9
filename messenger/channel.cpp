@@ -203,4 +203,14 @@ int channel::receive_message(QString token){
 
 }
 
+ channel::~channel(){
+     QFile file(QDir::currentPath()+"/channels/" +username+".json");
+     if(file.exists()){
 
+         file.remove();
+     }
+
+
+
+
+ }

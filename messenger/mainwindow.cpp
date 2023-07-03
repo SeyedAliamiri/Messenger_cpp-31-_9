@@ -13,8 +13,15 @@ MainWindow::MainWindow(QWidget *parent)
 
 {
     ui->setupUi(this);
+    t=new QTimer();
+    signupwindow=new sign_in(this);
+    QObject::connect(signupwindow,SIGNAL(signal_signup(QString, QString, QString, QString)),this,SLOT(signup(QString, QString, QString, QString)));
+    QObject::connect(signupwindow,SIGNAL(already_have_account()),this,SLOT(already_have()));
+    loginwindow=new log_in(this);
+    QObject::connect(loginwindow,SIGNAL(signal_login(QString,QString)),this,SLOT(login(QString, QString)));
+    QObject::connect(loginwindow,SIGNAL(back()),this,SLOT(log_in_back()));
+     first_check();
 
-    //first_check();
 }
 
 MainWindow::~MainWindow()
@@ -53,7 +60,7 @@ void MainWindow::signup(QString username, QString password, QString firstname, Q
 
               if(code == "200"){
                   signupwindow->close();
-                  delete signupwindow;
+
                   login(username,password);
               }
               else{
@@ -100,10 +107,9 @@ void MainWindow::login(QString username, QString password)
                   file.write(doc.toJson());
                   file.close();
                   m = new main_user(token, username, password);
-                  if(loginwindow==nullptr){
-                      delete loginwindow;
-                        loginwindow=nullptr;
-                  }
+                  QObject::connect(m,SIGNAL(loged_out()),this,SLOT(loged_out_signal()));
+
+                 loginwindow->close();
                   start_main_page();
 
 
@@ -134,14 +140,12 @@ void MainWindow::first_check(){
         password=obj.value("password").toString();
         token=obj.value("token").toString();
         m=new main_user(token,username,password);
+        QObject::connect(m,SIGNAL(loged_out()),this,SLOT(loged_out_signal()));
         start_main_page();
 
     }
     else{
-        signupwindow=new sign_in(this);
-        QObject::connect(signupwindow,SIGNAL(signal_signup(QString, QString, QString, QString)),this,SLOT(signup(QString, QString, QString, QString)));
-        QObject::connect(signupwindow,SIGNAL(already_have_account()),this,SLOT(already_have()));
-        signupwindow->show();
+       signupwindow->show();
     }
 
 }
@@ -149,65 +153,31 @@ void MainWindow::first_check(){
 
 void MainWindow::already_have(){
     signupwindow->close();
-    _sleep(100);
-    delete signupwindow;
-    signupwindow=nullptr;
-    loginwindow=new log_in(this);
-    QObject::connect(loginwindow,SIGNAL(signal_login(QString,QString)),this,SLOT(login(QString, QString)));
-    QObject::connect(loginwindow,SIGNAL(back()),this,SLOT(log_in_back()));
     loginwindow->show();
 
 }
 
 void MainWindow::log_in_back(){
     loginwindow->close();
-    delete loginwindow;
-    loginwindow=nullptr;
-    signupwindow=new sign_in(this);
-    QObject::connect(signupwindow,SIGNAL(signal_signup(QString, QString, QString, QString)),this,SLOT(signup(QString, QString, QString, QString)));
-    QObject::connect(signupwindow,SIGNAL(already_have_account()),this,SLOT(already_have()));
     signupwindow->show();
 
 };
-//thread new class
-class new_thread:public QThread{
-public:
-    new_thread(MainWindow* m){
-        this->m=m;
-    }
-   void run(){
-       for(;;){
-           //if connection is ok
-           //check connection is for you :))
-           if(1){
-               m->m->receive_message();
-               m->m->check_for_new_chat();
 
 
-           }
-           sleep(1500);
-       }
 
-   }
-
-
-    MainWindow* m;
-
-
-};
 
 void MainWindow::start_main_page(){
-    main_page * m_p=new main_page(m);
+    t=new QTimer();
+    m_p=new main_page(m);
     QObject::connect(m,SIGNAL(find_new_message(chat*)),m_p,SLOT(new_message(chat*)));
     QObject::connect(m,SIGNAL(find_new_member(chat*)),m_p,SLOT(new_member(chat*)));
-    QTimer* t=new QTimer();
+    QObject::connect(m_p,SIGNAL(log_out()),this,SLOT(log_out_slot()));
     connect(t,SIGNAL(timeout()),this,SLOT(update_()));
-    t->start(1000);
+    t->start(1500);
     m_p->show();
     m_p->setWindowIcon(QIcon(":/new/prefix1/appicon.png"));
     m_p->setWindowTitle("messenger");
-    //m->receive_message();
-    //m->check_for_new_chat();
+
 
 }
 
@@ -218,3 +188,30 @@ void MainWindow::update_(){
 
 
 }
+void MainWindow::log_out_slot(){
+    if(m->token!="")
+    m->log_out();
+
+};
+void MainWindow::loged_out_signal(){
+    t->stop();
+    t->deleteLater();
+    m_p->close();
+    m_p->deleteLater();
+    m->deleteLater();
+   /* signupwindow=new sign_in(this);
+    QObject::connect(signupwindow,SIGNAL(signal_signup(QString, QString, QString, QString)),this,SLOT(signup(QString, QString, QString, QString)));
+    QObject::connect(signupwindow,SIGNAL(already_have_account()),this,SLOT(already_have()));*/
+    signupwindow->deleteLater();
+    loginwindow->deleteLater();
+    signupwindow=new sign_in(this);
+    QObject::connect(signupwindow,SIGNAL(signal_signup(QString, QString, QString, QString)),this,SLOT(signup(QString, QString, QString, QString)));
+    QObject::connect(signupwindow,SIGNAL(already_have_account()),this,SLOT(already_have()));
+    loginwindow=new log_in(this);
+    QObject::connect(loginwindow,SIGNAL(signal_login(QString,QString)),this,SLOT(login(QString, QString)));
+    QObject::connect(loginwindow,SIGNAL(back()),this,SLOT(log_in_back()));
+    signupwindow->show();
+
+
+};
+
