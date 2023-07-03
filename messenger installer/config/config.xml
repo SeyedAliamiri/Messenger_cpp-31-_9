@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Installer>
-    <Name>messenger</Name>
-    <Version>1.0.0</Version>
-    <Title>messenger Installer</Title>
-    <Publisher>Your vendor</Publisher>
-    <StartMenuDir>Super App</StartMenuDir>
-    <TargetDir>@HomeDir@/apmessenger</TargetDir>
-</Installer>
