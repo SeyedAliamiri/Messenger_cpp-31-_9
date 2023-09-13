@@ -6,6 +6,7 @@ group name: c++(=31)
 
 **built with:** c++ and QT creator
 
+there was a problem and *rskala* is the same person as *zahrabtlb*
 
 
 
@@ -46,6 +47,8 @@ If you log in you can use program until you log out.
 Server responses slowly  so please wait for changes and  execute commands, and please dont click again just wait a few seconds.
 
 Connection with server is through http request and response.
+
+Now the server no longer works.
 
 
 
@@ -105,6 +108,8 @@ list of messeges and list of users updates.
 
 you can easily install this program.
 just extract messenger installer.zip and run messenger.exe to install app everywhere you want and then just run application and enjoy :)
+
+
 
 
 
