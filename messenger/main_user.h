@@ -25,6 +25,7 @@ signals:
      void  find_new_member(chat*);
      void  messagebox(QString, QString, bool);
      void  loged_out();
+     void  signal_connected(bool);
 public slots:
      void  get_new_message(chat*);
 

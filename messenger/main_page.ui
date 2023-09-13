@@ -27,9 +27,53 @@
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,2">
+     <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,2">
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0,6,0,1">
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,15,1,1">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1,6">
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="networkpic">
+            <property name="styleSheet">
+             <string notr="true">border-image: url(:/new/prefix1/picc/wifi2.png);
+</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="nonetworkpic">
+            <property name="styleSheet">
+             <string notr="true">
+border-image: url(:/new/prefix1/picc/wifinot2.png);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="network">
+            <property name="font">
+             <font>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>network status</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <property name="spacing">
@@ -103,28 +147,6 @@
            </widget>
           </item>
          </layout>
-        </item>
-        <item>
-         <widget class="QTextBrowser" name="network_status">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(231, 239, 255);</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="network">
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(231, 239, 255);</string>
-          </property>
-          <property name="text">
-           <string>network status</string>
-          </property>
-         </widget>
         </item>
         <item>
          <widget class="QListWidget" name="member_list">
@@ -395,8 +417,8 @@ background-color: rgb(255, 255, 255);</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>785</width>
-             <height>485</height>
+             <width>798</width>
+             <height>510</height>
             </rect>
            </property>
           </widget>
@@ -473,7 +495,6 @@ p, li { white-space: pre-wrap; }
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

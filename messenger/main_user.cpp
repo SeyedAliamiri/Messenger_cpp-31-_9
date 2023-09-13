@@ -81,7 +81,9 @@ int main_user::check_for_new_chat(){
 
     //int u_returncode = 0;
     QObject::connect(u_manager, &QNetworkAccessManager::finished, this, [&](QNetworkReply* u_reply) {
-        if (u_reply->error()) { return; }
+        if (u_reply->error()) { emit signal_connected(0); return; }
+
+        emit signal_connected(1);
 
         QByteArray data = u_reply->readAll();
         QJsonDocument jsonDoc = QJsonDocument::fromJson(data);

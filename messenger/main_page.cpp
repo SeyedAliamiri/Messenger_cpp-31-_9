@@ -22,11 +22,13 @@ main_page::main_page(main_user* mainuser,QWidget *parent) :
 
     ui->scrollArea->setWidget(ui->widget_2);
     member_list_type_id=4;
-    ui->network_status->hide();
-    ui->network->setWindowIcon(QIcon(":/new/prefix1/picc/wifi.png"));
-   // ui->network->setText("Network Status: connected")
+    ui->nonetworkpic->hide();
+    ui->networkpic->show();
+
 
     QObject::connect(m, SIGNAL(messagebox(QString, QString, bool)), this,SLOT(show_messagebox(QString, QString, bool)));
+    QObject::connect(m, SIGNAL(signal_connected(bool)), this, SLOT(slot_network(bool)));
+
     on_all_button_clicked();
     ui->create_group->setIcon(QIcon(":/new/prefix1/add_g.png"));
     ui->create_channel->setIcon(QIcon(":/new/prefix1/add.jpg"));
@@ -169,7 +171,10 @@ void main_page::set_messages_graphicview(QVector<Message> messages){
 
     ui->chatname->setText(clicked_chat->username);
     for(auto& msg:mesageslayout) delete msg;
-    for(auto& msg:mesagestext) msg->close();
+    for(auto& msg:mesagestext) {
+        msg->close();
+        delete msg;
+    }
     mesageslayout.clear();
     mesagestext.clear();
 
@@ -177,7 +182,8 @@ void main_page::set_messages_graphicview(QVector<Message> messages){
     QVector<Message>::iterator it;
     for(it = messages.begin(); it != messages.end() ; it++){
         QHBoxLayout* newlayout = new QHBoxLayout();
-        QSpacerItem* space = new QSpacerItem(200,20);
+        QSpacerItem* space = new QSpacerItem(250,20);
+
         QTextBrowser* text = new QTextBrowser(this);
 
 
@@ -405,11 +411,13 @@ void main_page::on_pushButton_clicked()
 void main_page::slot_network(bool connected)
 {
     if(connected){
-        ui->network->setWindowIcon(QIcon(":/new/prefix1/picc/wifi.png"));
+        ui->nonetworkpic->hide();
+        ui->networkpic->show();
         ui->network->setText("Network Status: connected");
     }
     else{
-        ui->network->setWindowIcon(QIcon(":/new/prefix1/picc/wifinot.png"));
+        ui->networkpic->hide();
+        ui->nonetworkpic->show();
         ui->network->setText("Network Status: disconnected");
     }
 

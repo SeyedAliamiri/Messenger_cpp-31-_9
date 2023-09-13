@@ -11,5 +11,7 @@
         <file>picc/logout.png</file>
         <file>picc/wifi.png</file>
         <file>picc/wifinot.png</file>
+        <file>picc/wifi2.png</file>
+        <file>picc/wifinot2.png</file>
     </qresource>
 </RCC>
