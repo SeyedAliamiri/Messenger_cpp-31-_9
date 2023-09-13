@@ -6,7 +6,7 @@ group name: c++(=31)
 
 **built with:** c++ and QT creator
 
-there was a problem and *rskala* is the same person as *zahrabtlb*
+there was a problem and **rskala** is the same person as **zahrabtlb**
 
 
 
