@@ -4,8 +4,6 @@ This is Advanced Programming project.
 
 group name: c++(=31)
 
-group number = 9
-
 **built with:** c++ and QT creator
 
 
@@ -20,6 +18,10 @@ group number = 9
 **•  Join your friends group and chat with them**
 
 **•  Create your own channel and publish whatever you want** 
+
+
+
+![Screenshot 2023-07-05 174356](https://github.com/SeyedAliamiri/Messenger_cpp-31-_9/assets/124011267/dac39838-169a-432d-bebd-f7991bd3ccda)
 
 
 
@@ -106,5 +108,7 @@ just extract messenger installer.zip and run messenger.exe to install app everyw
 
 
 
+![Screenshot 2023-07-05 174915](https://github.com/SeyedAliamiri/Messenger_cpp-31-_9/assets/124011267/106ea061-bf0c-42ea-8c3d-7f445fc52083)
 
+![Screenshot 2023-07-05 174737](https://github.com/SeyedAliamiri/Messenger_cpp-31-_9/assets/124011267/e1c01f96-3ec8-46bb-a7d1-da3248a6c6d4)
 
